@@ -1,12 +1,12 @@
 <template>
     <SubHeader></SubHeader>
     <section>
-        
+
     </section>
 </template>
 
 <script setup>
-    import SubHeader from './SubHeader.vue';
+    import SubHeader from './SubdomainHeader.vue';
 
 </script>
 

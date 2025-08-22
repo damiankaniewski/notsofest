@@ -355,7 +355,7 @@
             font-size: 64px;
         }
         .right {
-            padding: 0;
+            padding: 0 40px;
         }
         .main-view {
             margin: 0 0 4rem;

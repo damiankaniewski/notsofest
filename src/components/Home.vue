@@ -1,34 +1,39 @@
 <template>
     <transition name="loading-fade">
-        <div v-if="isLoading" class="loading-screen">
+        <div v-if="!animationEnded" class="loading-screen">
             <motion.img
             class="loading-logo"
             :src="logo" 
             alt="NotSoFest logo"
             :initial="{y:0, opacity: 1, scale: 1}"
-            :animate="startAnimation  ? {y: -800, opacity: 0} : {y: 0,  opacity:  1}"
-            :transition="{ duration: 0.8, onComplete: finishLoading}"
+            :animate="startAnimation  ? {y: -800, opacity: 0} : null"
+            :transition="{ duration: 0.2, ease: 'easeOut'}"
+            @animation-complete="handleAnimationEnd"
             />
         </div>
     </transition>
-    <transition>
-        <section id="home" v-show="!isLoading">
+    <transition name="loading-fade">
+        <video
+            v-show="animationEnded"
+            class="intro"
+            preload="auto"
+            autoplay
+            muted
+            @canplaythrough="handleVideoLoad"
+            @click="handleVideoEnd"
+            @ended="handleVideoEnd"
+        >
+            <source :src="intro" type="video/mp4">
+        </video>
+    </transition>
+    <transition name="loading-fade">
+        <section id="home" v-show="videoEnded">
             <img
-                class="intro"
+                class="home-background"
                 :src="placeholder" 
                 alt=""
-                @load="handleVideoLoad"
+                @load="handleBackgroundLoad"
             >
-
-            <video
-                class="intro"
-                autoplay
-                muted
-                loop
-                @loadeddata="handleVideoLoad"
-            >
-
-            </video>
             <div class="overlay">
                 <div class="header">
                     <div class="left">
@@ -48,15 +53,13 @@
                     <div class="placeholder"></div>
                     <div class="center-content">
                         <button class="tickets">
-                            Kup<br>Bilet</br>
+                            Kup<br>Bilet
                         </button>
                         <div class="time-remaining">
                             <h1>
                                 Pozostało
                             </h1>
-                            <p>
-                                {{ timeRemaining }}
-                            </p>
+                            <p v-html="timeRemaining"></p>
                         </div>
                     </div>
                     <div href="#more" class="show-more">
@@ -70,7 +73,7 @@
         </section>
     </transition>
     <transition>
-        <section id="more">
+        <section id="more" v-show="videoEnded">
             <div class="header">
                 <div class="left">
                     <button>
@@ -122,29 +125,46 @@
 </template>
 
 <script setup>
-    import { ref, onMounted, onUnmounted } from "vue";
+    import { ref, onMounted, onUnmounted, watch} from "vue";
     import { motion } from "motion-v";
     import logo from "../assets/logo.png";
+    import intro from "../assets/intro.mp4"
     import placeholder from "../assets/placeholder.png"
     
-    const isLoading = ref(true);
+
+    const introLoaded = ref(false);
+    const backgroundLoaded = ref(false);
+    const videoEnded = ref(false);
+    const minLoadingTime = ref(false);
     const startAnimation = ref(false);
+    const animationEnded = ref(false);
 
     const eventDate = new Date("2025-11-15T12:00:00");
     const timeRemaining = ref("");
 
     const handleVideoLoad = () => {
-        startAnimation.value = true;
+        introLoaded.value = true;
     }
 
-    const finishLoading = () => {
-        if(startAnimation.value === true){
-            setTimeout(()  => {
-                isLoading.value = false;
-            }, 400);
+    const handleBackgroundLoad = () => {
+        backgroundLoaded.value = true;
+    }
+
+    const handleVideoEnd = () => {
+        videoEnded.value = true;
+    }
+    
+    const handleAnimationEnd = () => {
+        animationEnded.value = true;
+    }
+
+    watch([introLoaded, backgroundLoaded, minLoadingTime], ([intro, bg, time]) => {
+        if (intro && bg && time){
+            startAnimation.value = true;
         }
-    }
+    });
 
+    
     const updateTime = () => {
         const now = new Date().getTime();
         const timeToEvent = eventDate.getTime() - now;
@@ -157,13 +177,18 @@
         const days = Math.floor(timeToEvent / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeToEvent % (1000 * 60 * 60 * 24 )) / (1000 * 60 * 60));
         const minutes = Math.floor((timeToEvent % (1000 * 60  * 60)) / (1000 * 60));
-        
-        timeRemaining.value = `${days} dni: ${hours} godzin: ${minutes} minut`;
+        const seconds = Math.floor((timeToEvent) % (1000 * 60) / 1000);
+        timeRemaining.value = `${days} dni: ${hours} godzin: ${minutes} minut<br>${seconds} sekund`;
     }
 
     let interval;
 
     onMounted(() => {
+
+        setTimeout(() => {
+            minLoadingTime.value = true;
+        }, 800)
+
         updateTime();
         interval = setInterval(updateTime, 1000);
     });
@@ -174,36 +199,38 @@
 
 </script>
 
-
 <style lang="scss" scoped>
 
-    a {
-        text-decoration: none;
-    }
-    a:visited {
-        color: #FD7622;
-    }
     a:hover {
         scale: 1.05;
         color: #cc611f;
     }
 
+    .intro {
+        display: flex;
+        position: fixed;
+        justify-content: center;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
     .loading-fade-leave-active {
-    transition: all 0.8s ease;
+        transition: all 0.8s ease;
     }
     .loading-fade-leave-to {
-    opacity: 0;
-    transform: translateY(-20px);
-    backdrop-filter: blur(0);
-    background: rgba(0, 0, 0, 0);
+        opacity: 0;
+        transform: translateY(-20px);
+        backdrop-filter: blur(0);
+        background: rgba(0, 0, 0, 0);
     }
 
     .page-fade-enter-active {
-    transition: all 0.8s ease 0.3s;
+        transition: all 0.8s ease 0.4s;
     }
     .page-fade-enter-from {
-    opacity: 0;
-    transform: translateY(20px);
+        opacity: 0;
+        transform: translateY(20px);
     }
 
     .loading-screen {
@@ -222,7 +249,7 @@
         justify-self: center;
     }
 
-    .intro {
+    .home-background {
         position: absolute;
         top: 0;
         left: 0;

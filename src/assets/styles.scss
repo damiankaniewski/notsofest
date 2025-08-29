@@ -15,6 +15,15 @@ body {
     font-size: 32px;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #FD7622;
+}
+
 section {
     position: relative;
     width: 100%;

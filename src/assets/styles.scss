@@ -19,6 +19,11 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    scale: 1.05;
+    color: #cc611f;
+}
+
 a:visited {
     text-decoration: none;
     color: #FD7622;

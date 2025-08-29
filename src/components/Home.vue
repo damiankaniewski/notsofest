@@ -35,20 +35,7 @@
                 @load="handleBackgroundLoad"
             >
             <div class="overlay">
-                <div class="header">
-                    <div class="left">
-                        <button>
-                        <i class="fas fa-bars"></i>
-                        </button>
-                        <a href="https://www.google.com/maps/place/Klub+Studencki+%C5%BBaczek/@50.0527269,19.9179119,4833m/data=!3m1!1e3!4m6!3m5!1s0x47165b0ab06be74f:0xf3dd8c43cc3c000b!8m2!3d50.060407!4d19.9223938!16s%2Fg%2F11h0tfk2r?entry=ttu&g_ep=EgoyMDI1MDgxOC4wIKXMDSoASAFQAw%3D%3D">Kraków<br>Klub Żaczek</a>
-                    </div>
-                    <div class="center">
-                        <img :src="logo" alt="NotSoFest logo">
-                    </div>
-                    <div class="right">
-                        <p>15.11.2025</p>
-                    </div>
-                </div>
+                <Header></Header>
                 <div class="main-view">
                     <div class="placeholder"></div>
                     <div class="center-content">
@@ -74,20 +61,10 @@
     </transition>
     <transition>
         <section id="more" v-show="videoEnded">
-            <div class="header">
-                <div class="left">
-                    <button>
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-                <div class="center">
-                    <a href="#home">
-                        <i class="fas fa-chevron-up"></i>
-                    </a>
-                </div>
-                <div class="right">
-                    <img :src="logo" alt="NotSoFest logo">
-                </div>
+            <div class="return-button">
+                <a href="#home">
+                    <i class="fas fa-chevron-up"></i>
+                </a>
             </div>
             <div class="main-view">
                 <div class="co">
@@ -127,6 +104,7 @@
 <script setup>
     import { ref, onMounted, onUnmounted, watch} from "vue";
     import { motion } from "motion-v";
+    import Header from "./HomeHeader.vue";
     import logo from "../assets/logo.png";
     import intro from "../assets/intro.mp4"
     import placeholder from "../assets/placeholder.png"
@@ -201,11 +179,6 @@
 
 <style lang="scss" scoped>
 
-    a:hover {
-        scale: 1.05;
-        color: #cc611f;
-    }
-
     .intro {
         display: flex;
         position: fixed;
@@ -270,56 +243,20 @@
         height: 100%;
     }
 
-    .header {
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items: flex-start;
-        height: 140px;
-    }
-    
-    .left, .center, .right {
-        padding: 36px 40px;
-        gap: 20px;
+    .return-button {
+        z-index: 20;
+        padding-top: 40px;
         display: flex;
         align-items: center;
-        text-align: center;
-        color: #FD7622;
-        
-        img {
-            height: auto;
-            width: 200px;
-        }
-        button {
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            i {
-                font-size: 64px;
-                color: #FD7622;
-            }
-        }
-        button:hover {
-            i{
-                scale: 1.05;
-                color: #cc611f;
-            }
-        }
-    }
-
-    .center {
-        padding: 0;
-        justify-self: center;
-        align-self: center;
-    }
-    
-    .right{
-        justify-self: end;
+        justify-content: center;
+        font-size: 64px;
+        height: 140px;
     }
 
     .main-view {
         height: 100%;
         padding: 16px;
+        padding-top: 4rem;
         display: flex;
         text-align: center;
         flex-direction: column;
@@ -362,6 +299,7 @@
     }
 
     .show-more {
+        z-index: 20;
         display: flex;
         flex-direction: column;
         font-size: 32px;
@@ -376,14 +314,6 @@
         display: flex;
         flex-direction: column;
 
-        .center {
-            padding: 36px 40px;
-            align-self: flex-start;
-            font-size: 64px;
-        }
-        .right {
-            padding: 0 40px;
-        }
         .main-view {
             margin: 0 0 4rem;
             justify-content: center;

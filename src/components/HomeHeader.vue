@@ -2,10 +2,10 @@
     <header class="header">
         <div class="left">
             <button v-if="!openedMenu" @click="handleOpenedMenu">
-                <i class="fas fa-bars"></i>
+                <i class="fa-solid fa-bars"></i>
             </button>
             <button v-else @click="handleClosedMenu">
-                <i class="fas fa-xmark"></i>
+                <i class="fa-solid fa-xmark"></i>
             </button>
             <a v-show="!scrolledDown && !openedMenu" href="https://www.google.com/maps/place/Klub+Studencki+%C5%BBaczek/@50.0527269,19.9179119,4833m/data=!3m1!1e3!4m6!3m5!1s0x47165b0ab06be74f:0xf3dd8c43cc3c000b!8m2!3d50.060407!4d19.9223938!16s%2Fg%2F11h0tfk2r?entry=ttu&g_ep=EgoyMDI1MDgxOC4wIKXMDSoASAFQAw%3D%3D">Kraków<br>Klub Żaczek</a>
         </div>

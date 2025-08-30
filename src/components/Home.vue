@@ -26,6 +26,17 @@
             <source :src="intro" type="video/mp4">
         </video>
     </transition>
+    <Transition>
+        <section v-if="menuVisible" class="burger-overlay">
+            <div class="burger-items">
+                <a href="/o-nas">O Nas</a>
+                <a href="/bilety">Bilety</a>
+                <a href="/galeria">Galeria</a>
+                <a href="/Merch">Merch</a>
+                <a href="/kontakt">Kontakt</a>
+            </div>
+        </section>
+    </Transition>
     <transition name="loading-fade">
         <section id="home" v-show="videoEnded">
             <img
@@ -35,7 +46,7 @@
                 @load="handleBackgroundLoad"
             >
             <div class="overlay">
-                <Header></Header>
+                <Header @toggle-menu="handleMenuToggle" @untoggle-menu="handleMenuUntoggle"></Header>
                 <div class="main-view">
                     <div class="placeholder"></div>
                     <div class="center-content">
@@ -49,10 +60,10 @@
                             <p v-html="timeRemaining"></p>
                         </div>
                     </div>
-                    <div href="#more" class="show-more">
+                    <div href="#more" class="show-more" :class="{ loweredIndex: menuVisible}">
                         <a href="#more">Pokaż więcej</a>
                         <a href="#more">
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fa-solid fa-chevron-down"></i>
                         </a>
                     </div>
                 </div>
@@ -61,9 +72,9 @@
     </transition>
     <transition>
         <section id="more" v-show="videoEnded">
-            <div class="return-button">
+            <div class="return-button" :class="{ loweredIndex: menuVisible}">
                 <a href="#home">
-                    <i class="fas fa-chevron-up"></i>
+                    <i class="fa-solid fa-chevron-up"></i>
                 </a>
             </div>
             <div class="main-view">
@@ -83,8 +94,7 @@
                             MC's i DJ-e, którzy wiedzą, jak poprowadzić publiczność przez całą muzyczną podróż. W składzie pojawią się zarówno wykonawcy, którzy mają już swoje miejsce na scenie, jak i ci, którzy dopiero pokazują swój potencjał.
                             Wspólnie tworzą mieszankę różnych stylów i brzmień, dzięki czemu każdy znajdzie tu coś dla siebie.
                         </p>
-                    </div>
-                    
+                    </div>        
                 </div>
                 <div class="gdzie">
                     <p class="titles">Gdzie?</p>
@@ -109,13 +119,13 @@
     import intro from "../assets/intro.mp4"
     import placeholder from "../assets/placeholder.png"
     
-
     const introLoaded = ref(false);
     const backgroundLoaded = ref(false);
     const videoEnded = ref(false);
     const minLoadingTime = ref(false);
     const startAnimation = ref(false);
     const animationEnded = ref(false);
+    const menuVisible = ref(false);
 
     const eventDate = new Date("2025-11-15T12:00:00");
     const timeRemaining = ref("");
@@ -136,13 +146,20 @@
         animationEnded.value = true;
     }
 
+    const handleMenuToggle = () => {
+        menuVisible.value = true;
+    };
+
+    const handleMenuUntoggle = () => {
+        menuVisible.value = false;
+    };
+    
     watch([introLoaded, backgroundLoaded, minLoadingTime], ([intro, bg, time]) => {
         if (intro && bg && time){
             startAnimation.value = true;
         }
     });
 
-    
     const updateTime = () => {
         const now = new Date().getTime();
         const timeToEvent = eventDate.getTime() - now;
@@ -232,6 +249,22 @@
         box-shadow: 0px 0px 25px rgba(0,0,0,0.25);
     }
 
+    .burger-overlay {
+        z-index: 20;
+        position: fixed;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .burger-items {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-size: 64px;
+    }
+
     .overlay {
         position: absolute;
         display: flex;
@@ -244,13 +277,16 @@
     }
 
     .return-button {
-        z-index: 20;
         padding-top: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 64px;
         height: 140px;
+
+        a {
+            z-index: 20;
+        }
     }
 
     .main-view {
@@ -346,6 +382,10 @@
         width: 100%;
         max-width: 52rem;
         height: 300px;
+    }
+
+    .loweredIndex {
+        z-index: 10;
     }
 
 </style>

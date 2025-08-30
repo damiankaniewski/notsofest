@@ -1,30 +1,46 @@
 <template>
     <header class="header">
         <div class="left">
-            <button>
+            <button v-if="!openedMenu" @click="handleOpenedMenu">
                 <i class="fas fa-bars"></i>
             </button>
-            <a :class="{ localization: scrolledDown}" href="https://www.google.com/maps/place/Klub+Studencki+%C5%BBaczek/@50.0527269,19.9179119,4833m/data=!3m1!1e3!4m6!3m5!1s0x47165b0ab06be74f:0xf3dd8c43cc3c000b!8m2!3d50.060407!4d19.9223938!16s%2Fg%2F11h0tfk2r?entry=ttu&g_ep=EgoyMDI1MDgxOC4wIKXMDSoASAFQAw%3D%3D">Kraków<br>Klub Żaczek</a>
+            <button v-else @click="handleClosedMenu">
+                <i class="fas fa-xmark"></i>
+            </button>
+            <a v-show="!scrolledDown && !openedMenu" href="https://www.google.com/maps/place/Klub+Studencki+%C5%BBaczek/@50.0527269,19.9179119,4833m/data=!3m1!1e3!4m6!3m5!1s0x47165b0ab06be74f:0xf3dd8c43cc3c000b!8m2!3d50.060407!4d19.9223938!16s%2Fg%2F11h0tfk2r?entry=ttu&g_ep=EgoyMDI1MDgxOC4wIKXMDSoASAFQAw%3D%3D">Kraków<br>Klub Żaczek</a>
         </div>
         <div class="center">
-            <img v-if="!scrolledDown" :src="logo" alt="NotSoFest logo">
+            <img v-if="!scrolledDown && !openedMenu" :src="logo" alt="NotSoFest logo">
         </div>
-        <div class="right" :class="{ 'right-scrolled': scrolledDown}">
-            <p v-if="!scrolledDown">15.11.2025</p>
+        <div class="right" :class="{ 'right-scrolled': scrolledDown || openedMenu}">
+            <p v-if="!scrolledDown && !openedMenu">15.11.2025</p>
             <img v-else :src="logo" alt="NotSoFest logo" class="logo-scrolled">
         </div>
     </header>
 </template>
 
 <script setup>
-    import { onMounted, onUnmounted, ref } from "vue";
+    import { defineEmits, onMounted, onUnmounted, ref } from "vue";
     import logo from "../assets/logo.png";
 
+    const emit = defineEmits(['toggle-menu']);
+
     const scrolledDown = ref(false);
+    const openedMenu = ref(false);
 
     const handleScroll = () => {
         scrolledDown.value = window.scrollY >= 100;
     };
+
+    const handleOpenedMenu = () => {
+        openedMenu.value = true;
+        emit('toggle-menu');
+    };
+
+    const handleClosedMenu = () => {
+        openedMenu.value = false;
+        emit('untoggle-menu');
+    }
 
     onMounted(() => {
         window.addEventListener("scroll", handleScroll);
@@ -39,30 +55,25 @@
 <style lang="scss" scoped>
 
     .header {
-        z-index: 10;
+        z-index: 20;
         position: fixed;
         display: grid;
-        width: 100%;
         grid-template-columns: 1fr auto 1fr;
-        align-items: center;
         height: 140px;
+        width: 100%;
     }
     
-    .localization {
-        visibility: hidden;
-    }
-
     .left, .center, .right {
+        display: flex;
         padding: 36px 40px;
         gap: 20px;
-        display: flex;
         align-items: center;
         text-align: center;
         color: #FD7622;
         
         img {
-            height: auto;
-            width: 200px;
+            height: 200px;
+            width: auto;
         }
         button {
             background: none;

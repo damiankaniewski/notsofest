@@ -29,27 +29,28 @@
     }
 
     .header {
-        display: flex;
-        justify-content: space-between;
+        z-index: 20;
         position: fixed;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: space-between;
         height: 140px;
         width: 100%;
-        z-index: 10;
-
+        
         div {
             display: flex;
             padding: 36px 40px;
-            text-align: center;
             align-items: center;
+            text-align: center;   
         }
         .right {
-            justify-self: center;
-            align-self: center;
             padding: 0 40px;
+            justify-self: flex-end;
+            align-self: center;
         }
         img {
-            height: auto;
-            width: 200px;
+            width: auto;
+            height: 200px;
         }
     }
 </style>

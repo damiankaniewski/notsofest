@@ -18,9 +18,9 @@
             <div class="links-box">
                 <a href="/bilety">
                     <img :src="logo" alt="NotSoFest logo">
-                    Festiwal
+                    <p>Festiwal</p>
                 </a>
-                <a href="/galeria">
+                <a href="/galeria" class="center">
                     <i class="fa-solid fa-compact-disc"></i>
                     Muzyka
                 </a>
@@ -39,29 +39,28 @@
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
     #about {
-        position: absolute;
+        position: relative;
         width: 100%;
-        height: 100%;
         display: flex;
         align-items: center;
     }
 
     .content-box {
-        position: absolute;
+        position: relative;
         align-items: flex-start;
         justify-content: space-between;
         display: flex;
-        padding: 6rem 12rem 6rem 12rem;
+        padding: 6rem 140px 6rem 12rem;
     }
 
     .about-us {
         display: flex;
         flex-direction: column;
         height: 100%;
-        width: 50%;
+        width: 60%;
         text-align: left;
         color: orange;
 
@@ -76,6 +75,10 @@
             font-size: 20px;
             color: #FED1B6;
         }
+    }
+
+    .center {
+        margin-top: 40px;
     }
 
     .links-box {
@@ -97,9 +100,74 @@
 
             img {
                 align-self: center;
-                margin: -50px;
+                margin-top: -78px;
                 height: 200px;
                 width: 200px;
+            }
+            p {
+                margin: -50px;
+                align-self: center;
+            }
+        }
+    }
+
+    @media(max-width: 1024px) {
+        .content-box {
+            flex-direction: column;
+            justify-items: flex-start;
+            align-items: center;
+            padding: 0;
+            padding-top: 80px;
+        }
+
+        .links-box {
+            padding-top: 2rem;
+            padding-right: 0;
+            flex-direction: row;
+            width: 80%;
+            justify-content: space-between;
+            gap: 0;
+        }
+
+        .center {
+            margin-top: 0;
+        }
+
+        .about-us {
+            width: 80%;
+
+            h1 {
+                font-size: 80px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+    }
+
+    @media(max-width: 768px) {
+
+        .content-box {
+            padding-top: 80px;
+        }
+
+        .links-box {
+            flex-direction: column;
+            gap: 2rem;
+            padding-top: 4rem;
+            padding-bottom: 2rem;
+        }
+
+        .center {
+            margin-top: 46px;
+        }
+
+        .about-us {
+            h1 {
+                font-size: 42px;
+            }
+            p {
+                font-size: 14px;
             }
         }
     }

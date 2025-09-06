@@ -53,4 +53,20 @@
             height: 200px;
         }
     }
+
+    @media(max-width: 768px) {
+        .left {
+            padding: 36px 12px;
+            i {
+                font-size: 36px;
+            }
+        }
+
+        .header {
+            img {
+                height: 100px;
+            }
+        }
+    }
+
 </style>

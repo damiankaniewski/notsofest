@@ -23,7 +23,7 @@
             @click="handleVideoEnd"
             @ended="handleVideoEnd"
         >
-            <source :src="intro" type="video/mp4">
+            <source :src="currentIntro" type="video/mp4">
         </video>
     </transition>
     <Transition>
@@ -50,6 +50,7 @@
                 <div class="main-view">
                     <div class="placeholder"></div>
                     <div class="center-content">
+                        <a class="location-mobile" v-show="!menuVisible" href="https://www.google.com/maps/place/Klub+Studencki+%C5%BBaczek/@50.0527269,19.9179119,4833m/data=!3m1!1e3!4m6!3m5!1s0x47165b0ab06be74f:0xf3dd8c43cc3c000b!8m2!3d50.060407!4d19.9223938!16s%2Fg%2F11h0tfk2r?entry=ttu&g_ep=EgoyMDI1MDgxOC4wIKXMDSoASAFQAw%3D%3D">Kraków<br>Klub Żaczek</a>
                         <button class="tickets">
                             Kup<br>Bilet
                         </button>
@@ -107,6 +108,7 @@
                     ></iframe>
                 </div>
             </div>
+            <div></div>
         </section>
     </transition>
 </template>
@@ -116,8 +118,9 @@
     import { motion } from "motion-v";
     import Header from "./HomeHeader.vue";
     import logo from "../assets/logo.png";
-    import intro from "../assets/intro.mp4"
-    import placeholder from "../assets/placeholder.png"
+    import introPion from "../assets/intro-pion.mp4";
+    import intro from "../assets/intro.mp4";
+    import placeholder from "../assets/placeholder.png";
     
     const introLoaded = ref(false);
     const backgroundLoaded = ref(false);
@@ -127,8 +130,14 @@
     const animationEnded = ref(false);
     const menuVisible = ref(false);
 
+    const currentIntro = ref(intro);
+
     const eventDate = new Date("2025-11-15T12:00:00");
     const timeRemaining = ref("");
+
+    const updateVideo = () => {
+        currentIntro.value = window.innerWidth <= 1024 ? introPion : intro;
+    }
 
     const handleVideoLoad = () => {
         introLoaded.value = true;
@@ -148,10 +157,12 @@
 
     const handleMenuToggle = () => {
         menuVisible.value = true;
+        document.body.style.overflow = 'hidden';
     };
 
     const handleMenuUntoggle = () => {
         menuVisible.value = false;
+        document.body.style.overflow = '';
     };
     
     watch([introLoaded, backgroundLoaded, minLoadingTime], ([intro, bg, time]) => {
@@ -179,6 +190,8 @@
     let interval;
 
     onMounted(() => {
+        updateVideo();
+        window.addEventListener("resize", updateVideo);
 
         setTimeout(() => {
             minLoadingTime.value = true;
@@ -189,6 +202,7 @@
     });
 
     onUnmounted(() => {
+        window.removeEventListener("resize", updateVideo);
         clearInterval(interval);
     });
 
@@ -251,6 +265,7 @@
 
     .burger-overlay {
         z-index: 20;
+        inset: 0;
         position: fixed;
         background: rgba(0, 0, 0, 0.9);
         display: flex;
@@ -386,6 +401,105 @@
 
     .loweredIndex {
         z-index: 10;
+    }
+
+    .location-mobile {
+        display: none;
+    }
+
+    @media(max-width: 1024px) {
+        .tickets {
+            padding: 12px 6rem;
+        }
+        .time-remaining {
+            p {
+                font-size: 42px;
+            }
+        }
+
+        .text-content {
+            font-size: 18px;
+        }
+
+        .main-view {
+            padding-top: 0;
+        }
+
+        iframe {
+            height: 200px;
+        }
+    }
+
+    @media(max-width: 768px) {
+
+        .location-mobile {
+            display: block;
+        }
+
+        .loading-logo {
+            width: 220px;
+        }
+
+        .tickets {
+            font-size: 64px;
+            padding: 12px 84px;
+            margin: 0;
+        }
+
+        .location-mobile {
+            padding-top: 32px;
+            font-size: 32px;
+        }
+
+        .time-remaining {
+            h1 {
+                font-size: 64px;
+            }
+            p {
+                font-size: 20px;
+            }
+        }
+
+        .show-more {
+            font-size: 24px;
+            i {
+                font-size: 30px;
+            }
+        }
+
+        .titles {
+            font-size: 24px;
+        }
+
+        .text-content {
+            font-size: 12px;
+        }
+
+        #more {
+            justify-content: space-between;
+            .main-view {
+                margin-top: -20px;
+                padding: 0 20px;
+                gap: 0;
+            }
+        }
+
+        iframe {
+            height: 140px;
+        }
+
+        .return-button {
+            align-items: flex-start;
+            a {
+                i {
+                    font-size: 36px;
+                }
+            }
+        }
+
+        .burger-items {
+            font-size: 56px;
+        }
     }
 
 </style>

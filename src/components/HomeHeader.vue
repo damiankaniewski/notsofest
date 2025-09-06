@@ -111,4 +111,41 @@
         padding: 0;
     }
 
+    @media(max-width: 1024px) {
+        .left {
+            a {
+                display: none;
+            }
+        }
+    }
+
+    @media(max-width: 768px) {
+        .right {
+            display: none;
+        }
+
+        .center, .right-scrolled {
+            display: flex;
+            img {
+                height: 100px;
+            }
+        }
+
+        .left {
+            padding: 36px 12px;
+            button {
+                i {
+                    font-size: 36px;
+                }
+            }
+            a {
+                display: none;
+            }
+        }
+
+        .logo-scrolled {
+            padding: 0 12px;
+        }
+    }
+
 </style>

@@ -1,6 +1,11 @@
 <template>
     <header class="header">
-        <div class="left">
+        <motion.div 
+            class="left"
+            :initial="{ opacity: 0, scale: 1.2, y: -200}"
+            :animate="{ opacity: 1, scale: 1.0, y: 0}"
+            :transition="{ duration: 0.4, delay: 0.2, type: spring, stiffness: 120}"
+        >
             <button v-if="!openedMenu" @click="handleOpenedMenu">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -8,19 +13,31 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <a v-show="!scrolledDown && !openedMenu" href="https://www.google.com/maps/place/Klub+Studencki+%C5%BBaczek/@50.0527269,19.9179119,4833m/data=!3m1!1e3!4m6!3m5!1s0x47165b0ab06be74f:0xf3dd8c43cc3c000b!8m2!3d50.060407!4d19.9223938!16s%2Fg%2F11h0tfk2r?entry=ttu&g_ep=EgoyMDI1MDgxOC4wIKXMDSoASAFQAw%3D%3D">Kraków<br>Klub Żaczek</a>
-        </div>
-        <div class="center">
+        </motion.div>
+        <motion.div 
+            class="center"
+            :initial="{ opacity: 0, scale: 1.2, x: 1000}"
+            :animate="{opacity: 1, scale: 1.0, x: 0}"
+            :transition="{ duration: 0.4, delay: 0.1, type: spring, stiffness: 120}"
+        >
             <img v-if="!scrolledDown && !openedMenu" :src="logo" alt="NotSoFest logo">
-        </div>
-        <div class="right" :class="{ 'right-scrolled': scrolledDown || openedMenu}">
+        </motion.div>
+        <motion.div
+            class="right"
+            :class="{ 'right-scrolled': scrolledDown || openedMenu}"
+            :initial="{ opacity: 0, scale: 1.2, x: 300}"
+            :animate="{opacity: 1, scale: 1.0, x: 0}"
+            :transition="{ duration: 0.4, delay: 0.3, type: spring, stiffness: 120}"
+        >
             <p v-if="!scrolledDown && !openedMenu">15.11.2025</p>
             <img v-else :src="logo" alt="NotSoFest logo" class="logo-scrolled">
-        </div>
+        </motion.div>
     </header>
 </template>
 
 <script setup>
     import { defineEmits, onMounted, onUnmounted, ref } from "vue";
+    import { motion, spring } from "motion-v";
     import logo from "../assets/logo.png";
 
     const emit = defineEmits(['toggle-menu']);

@@ -28,13 +28,16 @@
     </transition>
     <Transition>
         <section v-if="menuVisible" class="burger-overlay">
-            <div class="burger-items">
-                <a href="/o-nas">O Nas</a>
-                <a href="/bilety">Bilety</a>
-                <a href="/galeria">Galeria</a>
-                <a href="/Merch">Merch</a>
-                <a href="/kontakt">Kontakt</a>
-            </div>
+            <motion.div
+                class="burger-items"
+                initial=""
+            >
+                <motion.a :initial="{ x: -500}" :animate="{ x:0}" :transition="{ duration: 0.2, type: spring, stiffness: 120}" href="/o-nas">O Nas</motion.a>
+                <motion.a :initial="{ x: 500}" :animate="{ x:0}" :transition="{ duration: 0.2, type: spring, stiffness: 120}" href="/bilety">Bilety</motion.a>
+                <motion.a :initial="{ x: -500}" :animate="{ x:0}" :transition="{ duration: 0.2, type: spring, stiffness: 120}" href="/galeria">Galeria</motion.a>
+                <motion.a :initial="{ x: 500}" :animate="{ x:0}" :transition="{ duration: 0.2, type: spring, stiffness: 120}" href="/Merch">Merch</motion.a>
+                <motion.a :initial="{ x: -500}" :animate="{ x:0}" :transition="{ duration: 0.2, type: spring, stiffness: 120}" href="/kontakt">Kontakt</motion.a>
+            </motion.div>
         </section>
     </Transition>
     <transition name="loading-fade">
@@ -45,67 +48,109 @@
                 alt=""
                 @load="handleBackgroundLoad"
             >
-            <div class="overlay">
+            <div v-if="videoEnded" class="overlay">
                 <Header @toggle-menu="handleMenuToggle" @untoggle-menu="handleMenuUntoggle"></Header>
                 <div class="main-view">
                     <div class="placeholder"></div>
                     <div class="center-content">
                         <a class="location-mobile" v-show="!menuVisible" href="https://www.google.com/maps/place/Klub+Studencki+%C5%BBaczek/@50.0527269,19.9179119,4833m/data=!3m1!1e3!4m6!3m5!1s0x47165b0ab06be74f:0xf3dd8c43cc3c000b!8m2!3d50.060407!4d19.9223938!16s%2Fg%2F11h0tfk2r?entry=ttu&g_ep=EgoyMDI1MDgxOC4wIKXMDSoASAFQAw%3D%3D">Kraków<br>Klub Żaczek</a>
-                        <button class="tickets">
+                        <motion.button 
+                            class="tickets"
+                            :initial="{ opacity: 0, scale: 0.8}"
+                            :animate="{ opacity: 1, scale: 1.0}"
+                            :transition="{ duration: 0.5, delay: 0.2, type: spring, stiffness: 120}"
+                        >
                             Kup<br>Bilet
-                        </button>
+                        </motion.button>
                         <div class="time-remaining">
-                            <h1>
+                            <motion.h1
+                                :initial="{ opacity: 0, scale: 0.8}"
+                                :animate="{ opacity: 1, scale: 1.0}"
+                                :transition="{ duration: 0.5, delay: 0.3, type: spring, stiffness: 120}"
+                            >   
                                 Pozostało
-                            </h1>
-                            <p v-html="timeRemaining"></p>
+                            </motion.h1>
+                            <motion.p
+                                v-html="timeRemaining"
+                                :initial="{ opacity: 0, scale: 1.2}"
+                                :animate="{ opacity: 1, scale: 1.0}"
+                                :transition="{ duration: 1.2, delay: 0.6, type: spring, stiffness: 120}"
+                            ></motion.p>
                         </div>
                     </div>
-                    <div href="#more" class="show-more" :class="{ loweredIndex: menuVisible}">
+                    <motion.div 
+                        href="#more" 
+                        class="show-more" 
+                        :class="{ loweredIndex: menuVisible}"
+                        :initial="{ y: 100, opacity: 0}"
+                        :animate="{ y: 0, opacity: 1}"
+                        :transition="{ duration: 0.6, type: spring, stiffness: 120 }"
+                        >
                         <a href="#more">Pokaż więcej</a>
                         <a href="#more">
                             <i class="fa-solid fa-chevron-down"></i>
                         </a>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
     </transition>
     <transition>
         <section id="more" v-show="videoEnded">
-            <div class="return-button" :class="{ loweredIndex: menuVisible}">
+            <motion.div class="return-button" :class="{ loweredIndex: menuVisible}">
                 <a href="#home">
                     <i class="fa-solid fa-chevron-up"></i>
                 </a>
-            </div>
+            </motion.div>
             <div class="main-view">
                 <div class="co">
-                    <p class="titles">Co?</p>
+                    <motion.p 
+                        class="titles"
+                        :initial="{ opacity: 0, scale: 0.8}"
+                        :while-in-view="{ opacity: 1, scale: 1.0}"
+                        :transition="{ duration: 0.4, delay: 0.2, type: spring, stiffness: 120}"
+                    >Co?</motion.p>
                     <div class="text-content">
-                        <p>
-                            Koncert, który łączy pasję do hip-hopu z klimatem prawdziwego spotkania fanów muzyki. Na scenie usłyszysz dynamiczne bity, teksty opowiadające historie z życia i energię, która stopniowo wciąga w rytm.
-                            To wieczór pełen muzyki, kontaktu z publicznością i momentów, które zostają w pamięci jeszcze długo po ostatnim kawałku.
-                        </p>
+                        <AnimatedText 
+                            text="Koncert, który łączy pasję do hip-hopu z klimatem prawdziwego spotkania fanów muzyki. Na scenie usłyszysz dynamiczne bity, teksty opowiadające historie z życia i energię, która stopniowo wciąga w rytm.
+                            To wieczór pełen muzyki, kontaktu z publicznością i momentów, które zostają w pamięci jeszcze długo po ostatnim kawałku."
+                        >
+                        </AnimatedText>
                     </div>
                 </div>
                 <div class="kto">
-                    <p class="titles">Kto?</p>
+                    <motion.p 
+                        class="titles"
+                        :initial="{ opacity: 0, scale: 0.8}"
+                        :while-in-view="{ opacity: 1, scale: 1.0}"
+                        :transition="{ duration: 0.4, delay: 0.2, type: spring, stiffness: 120}"
+                    >Kto?</motion.p>
                     <div class="text-content">
-                        <p>
-                            MC's i DJ-e, którzy wiedzą, jak poprowadzić publiczność przez całą muzyczną podróż. W składzie pojawią się zarówno wykonawcy, którzy mają już swoje miejsce na scenie, jak i ci, którzy dopiero pokazują swój potencjał.
-                            Wspólnie tworzą mieszankę różnych stylów i brzmień, dzięki czemu każdy znajdzie tu coś dla siebie.
-                        </p>
+                        <AnimatedText
+                            delay="0.4"
+                            text="MC's i DJ-e, którzy wiedzą, jak poprowadzić publiczność przez całą muzyczną podróż. W składzie pojawią się zarówno wykonawcy, którzy mają już swoje miejsce na scenie, jak i ci, którzy dopiero pokazują swój potencjał.
+                            Wspólnie tworzą mieszankę różnych stylów i brzmień, dzięki czemu każdy znajdzie tu coś dla siebie."
+                        >
+                        </AnimatedText>
                     </div>        
                 </div>
                 <div class="gdzie">
-                    <p class="titles">Gdzie?</p>
-                    <iframe 
+                    <motion.p
+                        class="titles"
+                        :initial="{ opacity: 0, scale: 0.8}"
+                        :while-in-view="{ opacity: 1, scale: 1.0}"
+                        :transition="{ duration: 0.4, delay: 0.2, type: spring, stiffness: 120}"
+                     >Gdzie?</motion.p>
+                    <motion.iframe 
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d33410.03784441945!2d19.9179119!3d50.0527269!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b0ab06be74f%3A0xf3dd8c43cc3c000b!2sKlub%20Studencki%20%C5%BBaczek!5e1!3m2!1spl!2spl!4v1755817200793!5m2!1spl!2spl" 
                         style="border:0; border-radius: 15px; margin: 20px;"
                         allowfullscreen="" 
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                        :initial="{ opacity: 0, scale: 0.8}"
+                        :while-in-view="{ opacity: 1, scale: 1}"
+                        :transition="{ duration: 0.4, delay: 0.2, type: spring, stiffness: 120}"
+                    ></motion.iframe>
                 </div>
             </div>
             <div></div>
@@ -115,8 +160,9 @@
 
 <script setup>
     import { ref, onMounted, onUnmounted, watch} from "vue";
-    import { motion } from "motion-v";
+    import { animate, motion, spring } from "motion-v";
     import Header from "./HomeHeader.vue";
+    import AnimatedText from "./AnimatedText.vue";
     import logo from "../assets/logo.png";
     import introPion from "../assets/intro-pion.mp4";
     import intro from "../assets/intro.mp4";
@@ -195,6 +241,8 @@
 
         setTimeout(() => {
             minLoadingTime.value = true;
+            window.addEventListener("keydown", handleVideoEnd);
+            window.addEventListener("wheel", handleVideoEnd);
         }, 800)
 
         updateTime();
@@ -203,6 +251,8 @@
 
     onUnmounted(() => {
         window.removeEventListener("resize", updateVideo);
+        window.removeEventListener("keydown", handleVideoEnd);
+        window.removeEventListener("wheel", handleVideoEnd);
         clearInterval(interval);
     });
 

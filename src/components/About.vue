@@ -3,37 +3,62 @@
     <section id="about">
         <div class="content-box">
             <div class="about-us">
-                <h1>O NAS</h1>
-                <p>
-                    Nootsofest to ekipa, która łączy energię ulicy z nowoczesnym brzmieniem.<br>
-                    Tworzymy muzykę, w której bity pulsują w rytmie miasta, a teksty opowiadają nasze historie — szczere, surowe i bez filtrów.<br>
-                    Każdy z nas wnosi do składu swój unikalny styl: od soczystych punchline'ów, przez melodyjne refreny, po produkcje, które wkręcają się w głowę na długo.<br>
-                    Nie gonimy za trendami — wyznaczamy własne.<br>
-                    Inspirujemy się kulturą hip-hopu w najczystszej formie, ale nie boimy się mieszać gatunków, eksperymentować i zaskakiwać.<br>
-                    Nasze koncerty to mieszanka adrenaliny, kontaktu z publiką i energii, która nie pozwala stać w miejscu.<br>
-                    Notsofest to nie tylko muzyka — to wspólnota ludzi, którzy czują ten sam vibe.<br>
-                    Jeśli chcesz poczuć prawdziwy hip-hop w wersji 2025, jesteś we właściwym miejscu.
-                </p>
+                <motion.h1
+                    class="title"
+                    :initial="{ opacity: 0, scale: 0.8}"
+                    :animate="{ opacity: 1, scale: 1.0}"
+                    :transition="{ duration: 0.4, delay: 0.2, type: spring, stiffness: 120}"
+                >O NAS</motion.h1>
+                <AnimatedText
+                    class="content"
+                    delay="0.4"
+                    text="Nootsofest to ekipa, która łączy energię ulicy z nowoczesnym brzmieniem.
+                    Tworzymy muzykę, w której bity pulsują w rytmie miasta, a teksty opowiadają nasze historie — szczere, surowe i bez filtrów.
+                    Każdy z nas wnosi do składu swój unikalny styl: od soczystych punchline'ów, przez melodyjne refreny, po produkcje, które wkręcają się w głowę na długo.
+                    Nie gonimy za trendami — wyznaczamy własne.
+                    Inspirujemy się kulturą hip-hopu w najczystszej formie, ale nie boimy się mieszać gatunków, eksperymentować i zaskakiwać.
+                    Nasze koncerty to mieszanka adrenaliny, kontaktu z publiką i energii, która nie pozwala stać w miejscu.
+                    Notsofest to nie tylko muzyka — to wspólnota ludzi, którzy czują ten sam vibe.
+                    Jeśli chcesz poczuć prawdziwy hip-hop w wersji 2025, jesteś we właściwym miejscu."
+                ></AnimatedText>
             </div>
             <div class="links-box">
-                <a href="/bilety">
+                <motion.a
+                    href="/bilety"
+                    :initial="{ opacity: 0, scale: 0.8}"
+                    :animate="{ opacity: 1, scale: 1.0}"
+                    :transition="{ duration: 0.4, delay: 0.3, type: spring, stiffness: 120}"
+                >
                     <img :src="logo" alt="NotSoFest logo">
                     <p>Festiwal</p>
-                </a>
-                <a href="/galeria" class="center">
+                </motion.a>
+                <motion.a 
+                    href="/galeria"
+                    class="center"
+                    :initial="{ opacity: 0, scale: 0.8}"
+                    :animate="{ opacity: 1, scale: 1.0}"
+                    :transition="{ duration: 0.4, delay: 0.5, type: spring, stiffness: 120}"
+                >
                     <i class="fa-solid fa-compact-disc"></i>
                     Muzyka
-                </a>
-                <a href="/merch">
+                </motion.a>
+                <motion.a 
+                    href="/merch"
+                    :initial="{ opacity: 0, scale: 0.8}"
+                    :animate="{ opacity: 1, scale: 1.0}"
+                    :transition="{ duration: 0.4, delay: 0.7, type: spring, stiffness: 120}"
+                >
                     <i class="fa-solid fa-shirt"></i>
                     Ubrania
-                </a>
+                </motion.a>
             </div>
         </div>
     </section>
 </template>
 
 <script setup>
+    import { motion, spring } from "motion-v";
+    import AnimatedText from "./AnimatedText.vue";
     import SubHeader from "./SubdomainHeader.vue";
     import logo from "../assets/logo.png";
 
@@ -64,14 +89,14 @@
         text-align: left;
         color: orange;
 
-        h1 {
+        .title {
             color: #FD7622;
             padding-left: 1rem;
             font-size: 96px;
             margin-bottom: 0;
         }
 
-        p {
+        .content {
             font-size: 20px;
             color: #FED1B6;
         }
@@ -136,10 +161,10 @@
         .about-us {
             width: 80%;
 
-            h1 {
+            .title {
                 font-size: 80px;
             }
-            p {
+            .content {
                 font-size: 16px;
             }
         }
@@ -163,10 +188,10 @@
         }
 
         .about-us {
-            h1 {
+            .title {
                 font-size: 42px;
             }
-            p {
+            .content {
                 font-size: 14px;
             }
         }

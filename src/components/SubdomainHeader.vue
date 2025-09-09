@@ -1,21 +1,30 @@
 <template>
     <div class="header">
-        <div class="left">
+        <motion.div
+            class="left"
+            :initial="{ opacity: 0, scale: 0.8, x: -250}"
+            :animate="{ opacity: 1, scale: 1.0, x: 0}"
+            :transition="{ duration: 0.4, delay: 0.2, type: spring, stiffness: 120}"
+        >
             <a href="/">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
-        </div>
-        <div class="right">
+        </motion.div>
+        <motion.div 
+            class="right"
+            :initial="{ opacity: 0, scale: 0.8, x: 300}"
+            :animate="{ opacity: 1, scale: 1.0, x: 0}"
+            :transition="{ duration: 0.4, delay: 0.2, type: spring, stiffness: 120}"
+        >
             <img :src="logo" alt="NotSoFest logo">
-        </div>
+        </motion.div>
     </div>
     
 </template>
 
 <script setup>
+    import { motion } from "motion-v";
     import logo from "../assets/logo.png";
-
-
 </script>
 
 <style lang="scss" scoped>

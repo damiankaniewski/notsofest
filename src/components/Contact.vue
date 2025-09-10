@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-    import SubHeader from './SubdomainHeader.vue';
+    import SubHeader from './utils/SubdomainHeader.vue';
 
 </script>
 

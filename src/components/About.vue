@@ -58,8 +58,8 @@
 
 <script setup>
     import { motion, spring } from "motion-v";
-    import AnimatedText from "./AnimatedText.vue";
-    import SubHeader from "./SubdomainHeader.vue";
+    import AnimatedText from "./utils/AnimatedText.vue";
+    import SubHeader from "./utils/SubdomainHeader.vue";
     import logo from "../assets/logo.png";
 
 </script>

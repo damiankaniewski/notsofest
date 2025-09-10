@@ -161,8 +161,8 @@
 <script setup>
     import { ref, onMounted, onUnmounted, watch} from "vue";
     import { animate, motion, spring } from "motion-v";
-    import Header from "./HomeHeader.vue";
-    import AnimatedText from "./AnimatedText.vue";
+    import Header from "./utils/HomeHeader.vue";
+    import AnimatedText from "./utils/AnimatedText.vue";
     import logo from "../assets/logo.png";
     import introPion from "../assets/intro-pion.mp4";
     import intro from "../assets/intro.mp4";

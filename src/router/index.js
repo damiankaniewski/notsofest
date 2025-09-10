@@ -33,7 +33,7 @@ const routes  = [
         component: Tickets,
     },
     {
-        path: "/contact",
+        path: "/kontakt",
         name: "contact",
         component: Contact,
     }

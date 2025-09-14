@@ -1,39 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
 
-$orange-theme: #FD7622;
+$orange-theme: #fd7622;
 $pitch-black: #000000;
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: "Poppins", sans-serif;
-    margin: 0;
-    padding: 0;
-    font-weight: 600;
-    font-size: 32px;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  font-size: 32px;
 }
 
 a {
-    text-decoration: none;
-    color: #FD7622;
+  text-decoration: none;
+  color: #fd7622;
 }
 
 a:hover {
-    scale: 1.05;
-    color: #cc611f;
+  scale: 1.05;
+  color: #cc611f;
 }
 
 a:visited {
-    text-decoration: none;
-    color: #FD7622;
+  text-decoration: none;
+  color: #fd7622;
 }
 
 section {
-    position: relative;
-    width: 100%;
-    height: 100svh;
-    overflow: hidden;
-    background-color: black;
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background-color: black;
 }

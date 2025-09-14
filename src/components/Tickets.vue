@@ -1,16 +1,10 @@
 <template>
-    <SubHeader></SubHeader>
-    <section>
-
-    </section>
+  <SubHeader></SubHeader>
+  <section></section>
 </template>
 
 <script setup>
-    import SubHeader from './utils/SubdomainHeader.vue';
-
+import SubHeader from "./utils/SubdomainHeader.vue";
 </script>
 
-<style lang="scss">
-
-
-</style>
+<style lang="scss"></style>

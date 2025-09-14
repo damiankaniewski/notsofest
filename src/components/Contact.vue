@@ -152,8 +152,7 @@ async function handleSubmit() {
   try {
     loading.value = true;
     const payload = {
-      //   email: "kontakt@notsofest.pl",
-      email: "damian.kaniewski.contact@gmail.com",
+      email: "kontakt@notsofest.pl",
       subject: `Wiadomość od: ${form.firstName} ${form.lastName}`,
       message:
         `Imię i nazwisko: ${form.firstName} ${form.lastName}\n` +

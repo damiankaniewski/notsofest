@@ -7,7 +7,6 @@
 
 <script setup>
     import SubHeader from './utils/SubdomainHeader.vue';
-
 </script>
 
 <style lang="scss">

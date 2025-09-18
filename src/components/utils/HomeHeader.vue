@@ -72,6 +72,7 @@
 <style lang="scss" scoped>
 
     .header {
+        background-color: transparent;
         z-index: 20;
         position: fixed;
         display: grid;

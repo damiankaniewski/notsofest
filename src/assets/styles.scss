@@ -37,3 +37,14 @@ section {
   overflow: hidden;
   background-color: black;
 }
+
+.loading-fade-leave-active {
+  transition: all 0.8s ease;
+}
+
+.loading-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+  backdrop-filter: blur(0);
+  background: rgba(0, 0, 0, 0);
+}

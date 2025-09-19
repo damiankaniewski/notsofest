@@ -15,7 +15,7 @@
 
 <script setup> 
     import { ref, onMounted} from "vue"
-    import { delay, motion, spring } from "motion-v";
+    import { motion, spring } from "motion-v";
 
     
     const props = defineProps({

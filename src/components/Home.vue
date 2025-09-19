@@ -96,8 +96,9 @@
             class="show-more"
             :class="{ loweredIndex: menuVisible }"
             :initial="{ y: 100, opacity: 0 }"
-            :animate="{ y: 0, opacity: 1 }"
-            :transition="{ duration: 0.6, type: spring, stiffness: 120 }"
+            :animate="{ y: [0, -10, 0], opacity: 1 }"
+            :transition="{ duration: 0.6, type: spring, stiffness: 120, 
+              y: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1 }}"
           >
             <a href="#more">Pokaż więcej</a>
             <a href="#more">
@@ -272,17 +273,6 @@
 
     i {
       font-size: 64px;
-    }
-  }
-
-  #more {
-    display: flex;
-    flex-direction: column;
-
-    .main-view {
-      margin: 0 0 4rem;
-      justify-content: center;
-      gap: 3rem;
     }
   }
 

@@ -1,7 +1,14 @@
 <template>
     <transition>
         <section id="more">
-            <motion.div class="return-button" :class="{ loweredIndex: props.menuVisible }">
+            <motion.div 
+                class="return-button" 
+                :class="{ loweredIndex: props.menuVisible }"
+                :initial="{ opacity: 0, scale: 0.9 }"
+                :animate="{ opacity: 1, y: [0, -10, 0], scale: 1}"
+                :transition="{ duration: 0.6, type: spring, stiffness: 120, 
+                    y: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1 }}"
+            >
                 <a href="#home">
                     <i class="fa-solid fa-chevron-up"></i>
                 </a>
@@ -11,12 +18,10 @@
                     <motion.p
                         class="titles"
                         :initial="{ opacity: 0, scale: 0.8 }"
-                        :while-in-view="{ opacity: 1, scale: 1.0 }"
-                        :transition="{
-                        duration: 0.4,
-                        delay: 0.2,
-                        type: spring,
-                        stiffness: 120,
+                        :while-in-view="{ opacity: 1, scale: [1.0, 1.1, 1.0] }"
+                        :transition="{ 
+                            opacity: { duration: 0.6, delay: 0.2, type: spring, stiffness: 120 },
+                            scale: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 0.2}
                         }"
                         >Co?
                     </motion.p>
@@ -32,12 +37,10 @@
                     <motion.p
                         class="titles"
                         :initial="{ opacity: 0, scale: 0.8 }"
-                        :while-in-view="{ opacity: 1, scale: 1.0 }"
-                        :transition="{
-                        duration: 0.4,
-                        delay: 0.2,
-                        type: spring,
-                        stiffness: 120,
+                        :while-in-view="{ opacity: 1, scale: [1.0, 1.1, 1.0] }"
+                        :transition="{ 
+                            opacity: { duration: 0.8, delay: 0.2, type: spring, stiffness: 120 },
+                            scale: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 0.4}
                         }"
                         >Kto?
                     </motion.p>
@@ -54,12 +57,10 @@
                     <motion.p
                         class="titles"
                         :initial="{ opacity: 0, scale: 0.8 }"
-                        :while-in-view="{ opacity: 1, scale: 1.0 }"
-                        :transition="{
-                        duration: 0.4,
-                        delay: 0.2,
-                        type: spring,
-                        stiffness: 120,
+                        :while-in-view="{ opacity: 1, scale: [1.0, 1.1, 1.0] }"
+                        :transition="{ 
+                            opacity: { duration: 1, delay: 0.2, type: spring, stiffness: 120 },
+                            scale: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 0.6}
                         }"
                         >Gdzie?
                     </motion.p>
@@ -104,9 +105,8 @@
         justify-content: center;
         font-size: 64px;
         height: 140px;
-
         a {
-            z-index: 20;
+            z-index: 100;
         }
     }
 

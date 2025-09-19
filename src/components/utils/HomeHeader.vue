@@ -73,6 +73,7 @@
 
     .header {
         background-color: transparent;
+        pointer-events: none;
         z-index: 20;
         position: fixed;
         display: grid;
@@ -90,10 +91,18 @@
         color: #FD7622;
         
         img {
+            z-index: 20;
             height: 200px;
             width: auto;
         }
+
+        a{
+            pointer-events: all;
+        }
+
         button {
+            pointer-events:all;
+            z-index: 20;
             background: none;
             border: none;
             padding: 0;

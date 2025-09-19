@@ -1,18 +1,14 @@
 <template>
     <header class="header">
-        <motion.div 
+        <motion.div
             class="left"
-            :initial="{ opacity: 0, scale: 1.2, y: -200}"
-            :animate="{ opacity: 1, scale: 1.0, y: 0}"
-            :transition="{ duration: 0.4, delay: 0.2, type: spring, stiffness: 120}"
+            :class="{ 'left-scrolled': scrolledDown || openedMenu}"
+            :initial="{ opacity: 0, scale: 1.2, x: -200}"
+            :animate="{opacity: 1, scale: 1.0, x: 0}"
+            :transition="{ duration: 0.4, delay: 0.3, type: spring, stiffness: 120}"
         >
-            <button v-if="!openedMenu" @click="handleOpenedMenu">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <button v-else @click="handleClosedMenu">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <a v-show="!scrolledDown && !openedMenu" href="https://www.google.com/maps/place/Klub+Studencki+%C5%BBaczek/@50.0527269,19.9179119,4833m/data=!3m1!1e3!4m6!3m5!1s0x47165b0ab06be74f:0xf3dd8c43cc3c000b!8m2!3d50.060407!4d19.9223938!16s%2Fg%2F11h0tfk2r?entry=ttu&g_ep=EgoyMDI1MDgxOC4wIKXMDSoASAFQAw%3D%3D">Kraków<br>Klub Żaczek</a>
+            <p v-if="!scrolledDown && !openedMenu">15.11.2025</p>
+            <img v-else :src="logo" alt="NotSoFest logo" class="logo-scrolled">
         </motion.div>
         <motion.div 
             class="center"
@@ -22,15 +18,19 @@
         >
             <img v-if="!scrolledDown && !openedMenu" :src="logo" alt="NotSoFest logo">
         </motion.div>
-        <motion.div
+        <motion.div 
             class="right"
-            :class="{ 'right-scrolled': scrolledDown || openedMenu}"
-            :initial="{ opacity: 0, scale: 1.2, x: 300}"
-            :animate="{opacity: 1, scale: 1.0, x: 0}"
-            :transition="{ duration: 0.4, delay: 0.3, type: spring, stiffness: 120}"
+            :initial="{ opacity: 0, scale: 1.2, y: -200}"
+            :animate="{ opacity: 1, scale: 1.0, y: 0}"
+            :transition="{ duration: 0.4, delay: 0.2, type: spring, stiffness: 120}"
         >
-            <p v-if="!scrolledDown && !openedMenu">15.11.2025</p>
-            <img v-else :src="logo" alt="NotSoFest logo" class="logo-scrolled">
+            <a v-show="!scrolledDown && !openedMenu" href="https://www.google.com/maps/place/Klub+Studencki+%C5%BBaczek/@50.0527269,19.9179119,4833m/data=!3m1!1e3!4m6!3m5!1s0x47165b0ab06be74f:0xf3dd8c43cc3c000b!8m2!3d50.060407!4d19.9223938!16s%2Fg%2F11h0tfk2r?entry=ttu&g_ep=EgoyMDI1MDgxOC4wIKXMDSoASAFQAw%3D%3D">Kraków<br>Klub Żaczek</a>
+            <button v-if="!openedMenu" @click="handleOpenedMenu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <button v-else @click="handleClosedMenu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </motion.div>
     </header>
 </template>
@@ -134,12 +134,12 @@
         padding: 0 40px;
     }
 
-    .right-scrolled {
+    .left-scrolled {
         padding: 0;
     }
 
     @media(max-width: 1024px) {
-        .left {
+        .right {
             a {
                 display: none;
             }
@@ -147,18 +147,18 @@
     }
 
     @media(max-width: 768px) {
-        .right {
+        .left {
             display: none;
         }
 
-        .center, .right-scrolled {
+        .center, .left-scrolled {
             display: flex;
             img {
                 height: 100px;
             }
         }
 
-        .left {
+        .right {
             padding: 36px 12px;
             button {
                 i {

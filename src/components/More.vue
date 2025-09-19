@@ -39,7 +39,7 @@
                         :initial="{ opacity: 0, scale: 0.8 }"
                         :while-in-view="{ opacity: 1, scale: [1.0, 1.1, 1.0] }"
                         :transition="{ 
-                            opacity: { duration: 0.8, delay: 0.2, type: spring, stiffness: 120 },
+                            opacity: { duration: 0.81, delay: 0.2, type: spring, stiffness: 120 },
                             scale: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 0.4}
                         }"
                         >Kto?

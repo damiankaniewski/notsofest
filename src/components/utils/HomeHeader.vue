@@ -3,18 +3,32 @@
         <motion.div
             class="left"
             :class="{ 'left-scrolled': scrolledDown || openedMenu}"
-            :initial="{ opacity: 0, scale: 1.2, x: -200}"
+            :initial="{ opacity: 0, x: -200}"
             :animate="{opacity: 1, scale: 1.0, x: 0}"
             :transition="{ duration: 0.4, delay: 0.3, type: spring, stiffness: 120}"
         >
             <p v-if="!scrolledDown && !openedMenu">15.11.2025</p>
-            <img v-else :src="logo" alt="NotSoFest logo" class="logo-scrolled">
+            <motion.img 
+                v-else 
+                :src="logo"
+                :initial="{ opacity: 0, x: 100}"
+                :animate="{opacity: 1, scale: 1.0, x: 0, rotate: [-1, 1, -1]}"
+                :transition="{ duration: 0.4, delay: 0.1, type: spring, stiffness: 120,
+                    rotate: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1},
+                    scale: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1}
+                }"
+                alt="NotSoFest logo" 
+                class="logo-scrolled"
+            />
         </motion.div>
         <motion.div 
             class="center"
-            :initial="{ opacity: 0, scale: 1.2, x: 1000}"
-            :animate="{opacity: 1, scale: 1.0, x: 0}"
-            :transition="{ duration: 0.4, delay: 0.1, type: spring, stiffness: 120}"
+            :initial="{ opacity: 0, x: 1000}"
+            :animate="{opacity: 1, scale: [1.05, 1.0, 1.05], x: 0, rotate: [-0.5, 0.5, -0.5]}"
+            :transition="{ duration: 0.4, delay: 0.1, type: spring, stiffness: 120,
+                rotate: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1},
+                scale: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1}
+            }"
         >
             <img v-if="!scrolledDown && !openedMenu" :src="logo" alt="NotSoFest logo">
         </motion.div>

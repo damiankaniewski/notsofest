@@ -6,8 +6,11 @@
                 <motion.h1
                     class="title"
                     :initial="{ opacity: 0, scale: 0.8}"
-                    :animate="{ opacity: 1, scale: 1.0}"
-                    :transition="{ duration: 0.4, delay: 0.2, type: spring, stiffness: 120}"
+                    :animate="{ opacity: 1, scale: [1.0, 1.01, 1.0]}"
+                    :transition="{ 
+                        opacity: { duration: 0.4, delay: 0.2, type: spring, stiffness: 120 },
+                        scale: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 0.6}
+                    }"
                 >O NAS</motion.h1>
                 <AnimatedText
                     class="content"
@@ -135,7 +138,6 @@
             }
         }
     }
-
     @media(max-width: 1024px) {
         .content-box {
             flex-direction: column;

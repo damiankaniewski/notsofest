@@ -12,9 +12,12 @@
         </motion.div>
         <motion.div 
             class="right"
-            :initial="{ opacity: 0, scale: 0.8, x: 300}"
-            :animate="{ opacity: 1, scale: 1.0, x: 0}"
-            :transition="{ duration: 0.4, delay: 0.2, type: spring, stiffness: 120}"
+            :initial="{ opacity: 0, x: 100}"
+            :animate="{opacity: 1, scale: [1.05, 1.0, 1.05], x: 0, rotate: [-1, 1, -1]}"
+            :transition="{ duration: 0.4, delay: 0.1, type: spring, stiffness: 120,
+                rotate: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1},
+                scale: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1}
+            }"
         >
             <img :src="logo" alt="NotSoFest logo">
         </motion.div>

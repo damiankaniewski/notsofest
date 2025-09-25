@@ -138,13 +138,21 @@
             }
         }
     }
+    @media(max-width: 1280px){
+        #about {
+            align-items: center;
+            min-height: 100vh;
+            height: auto;
+        }
+    }
+
     @media(max-width: 1024px) {
         .content-box {
             flex-direction: column;
             justify-items: flex-start;
             align-items: center;
             padding: 0;
-            padding-top: 80px;
+            margin-bottom: 30px;
         }
 
         .links-box {
@@ -174,8 +182,12 @@
 
     @media(max-width: 768px) {
 
+        #about {
+           height: auto;
+        }
+
         .content-box {
-            padding-top: 80px;
+            margin-top: 100px;
         }
 
         .links-box {

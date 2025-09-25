@@ -50,46 +50,52 @@
               class="location-mobile"
               v-show="!menuVisible"
               href="https://www.google.com/maps/place/Klub+Studencki+%C5%BBaczek/@50.0527269,19.9179119,4833m/data=!3m1!1e3!4m6!3m5!1s0x47165b0ab06be74f:0xf3dd8c43cc3c000b!8m2!3d50.060407!4d19.9223938!16s%2Fg%2F11h0tfk2r?entry=ttu&g_ep=EgoyMDI1MDgxOC4wIKXMDSoASAFQAw%3D%3D"
-              >Kraków<br />Klub Żaczek</a
             >
-            <motion.button
-              class="tickets"
+              <motion.img 
+                  :src="place"
+                  :initial="{ opacity: 0, scale: 0.8}"
+                  :animate="{ opacity: 1, scale: 1, scale: [0.9, 1.0, 0.9]}"
+                  :transition="{ duration: 0.5, delay: 0.1, type: spring, stiffness: 120,
+                    scale: { repeat: Infinity, duration: 3, ease: 'easeInOut', delay: 0.6}
+                  }"
+                  class="textpng-home"
+                  alt="Kraków klub żaczek"
+              />
+            </a>
+            <motion.img 
+              :src="hiphop"
+              :initial="{ opacity: 0, scale: 0.8}"
+              :animate="{ opacity: 1, scale: 1.0, y: [8, 0, 8]}"
+              :transition="{ duration: 0.5, delay: 0.2, type: spring, stiffness: 120,
+                y: { repeat: Infinity, duration: 3, ease: 'easeInOut', delay: 1}
+              }"
+              class="hiphop"
+              alt="HIPHOP FESTIWAL"
+            />
+            <motion.img
+              :src="main_logo"
               :initial="{ opacity: 0, scale: 0.8 }"
-              :animate="{ opacity: 1, scale: 1.0 }"
-              :transition="{
-                duration: 0.5,
-                delay: 0.2,
-                type: spring,
-                stiffness: 120,
+              :animate="{ opacity: 1, scale: 1.0, scale: [0.9, 1.0, 0.9]}"
+              :transition="{ duration: 0.5, delay: 0.2, type: spring, stiffness: 120,
+                scale: { repeat: Infinity, duration: 3, ease: 'easeInOut', delay: 1}
+              }"
+              alt="NotSoFest logo"
+              class="main-logo"
+            />
+            <motion.a
+              class="tickets"
+              href="/bilety"
+              :initial="{ opacity: 0, scale: 0.8 }"
+              :animate="{ opacity: 1, scale: 1.0, rotate: [-0.5, 0.5, -0.5] }"
+              :transition="{ duration: 0.5, delay: 0.4, type: spring, stiffness: 120,
+                rotate: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 0.6},
               }"
             >
-              Kup bilet
-            </motion.button>
-            <div class="time-remaining">
-              <motion.h1
-                :initial="{ opacity: 0, scale: 0.8 }"
-                :animate="{ opacity: 1, scale: 1.0 }"
-                :transition="{
-                  duration: 0.5,
-                  delay: 0.3,
-                  type: spring,
-                  stiffness: 120,
-                }"
-              >
-                Pozostało
-              </motion.h1>
-              <motion.p
-                v-html="timeRemaining"
-                :initial="{ opacity: 0, scale: 1.2 }"
-                :animate="{ opacity: 1, scale: 1.0 }"
-                :transition="{
-                  duration: 1.2,
-                  delay: 0.6,
-                  type: spring,
-                  stiffness: 120,
-                }"
-              ></motion.p>
-            </div>
+              <img 
+                :src="tickets" 
+                alt="KUP BILETY"
+              />
+            </motion.a>
           </div>
           <motion.div
             href="#more"
@@ -114,7 +120,7 @@
 
 <script setup>
   import { ref, onMounted, onUnmounted } from "vue";
-  import { motion, spring } from "motion-v";
+  import { motion, scale, spring } from "motion-v";
 
   import Header from "./utils/HomeHeader.vue";
   import More from "./More.vue";
@@ -124,6 +130,11 @@
   import introPion from "../assets/intro-pion.mp4";
   import intro from "../assets/intro.mp4";
   import placeholder from "../assets/placeholder.png";
+
+  import place from "../assets/home/place.png";
+  import main_logo from "../assets/home/main_logo.png";
+  import tickets from "../assets/home/tickets.png";
+  import hiphop from "../assets/home/hiphop.png";
 
   import { loadingStatus } from "./scripts/siteLoadingScript.js";
   import { calculateCountdown } from "./scripts/calculateCountdown.js";
@@ -189,11 +200,22 @@
     z-index: 100;
     inset: 0;
   }
-
+  
   .loading-logo {
     width: 400px;
     height: auto;
     justify-self: center;
+  }
+
+  .hiphop {
+    width: 600px;
+    height: auto;
+    margin-bottom: 8px;
+  }
+
+  .main-logo {
+    width: 500px;
+    height: auto;
   }
 
   .home-background {
@@ -236,32 +258,22 @@
     gap: 16px;
   }
 
-  .time-remaining {
-    h1 {
-      margin: 0;
-      font-size: 96px;
-    }
-    p {
-      margin: 0;
-      font-size: 64px;
-    }
-  }
-
   .tickets {
-    visibility: hidden;
-    background: #fd7622f5;
     border: none;
-    margin-top: 32px;
+    margin-top: 8px;
     border-radius: 15px;
-    padding: 32px 32px;
-    color: black;
-    font-size: 2rem;
+    padding: 16px 32px;
+
+    img {
+      width: 900px;
+      height: auto;
+    }
   }
 
   .tickets:hover {
     scale: 1.05;
-    background: #cc611f;
-    cursor: pointer;
+    background: #793610;
+    cursor: poinrgb(56, 27, 8)
   }
 
   .show-more {
@@ -276,6 +288,11 @@
     }
   }
 
+  .textpng-home {
+    height: 40px;
+    width: auto;
+  }
+
   .loweredIndex {
     z-index: 10;
   }
@@ -284,15 +301,34 @@
     display: none;
   }
 
+  @media (max-width: 1280px) {
+    .location-mobile {
+      display: block;
+    }
+  }
+
   @media (max-width: 1024px) {
-    .tickets {
-      padding: 12px 6rem;
+    #home {
+      height: 100svh;
     }
 
-    .time-remaining {
-      p {
-        font-size: 42px;
+    .main-view {
+      margin-top: 200px;
+    }
+    .tickets {
+      padding: 0;
+
+      img {
+        width: 540px;
       }
+    }
+
+    .hiphop {
+      width: 400px;
+    }
+  
+    .main-logo {
+      width: 460px;
     }
 
     .main-view {
@@ -301,32 +337,41 @@
   }
 
   @media (max-width: 768px) {
-    .location-mobile {
-      display: block;
+    #home {
+      height: 100svh;
     }
 
     .loading-logo {
       width: 220px;
     }
 
-    .tickets {
-      font-size: 64px;
-      padding: 12px 84px;
+    .main-view {
+      margin-top: 120px;
+    }
+
+    .main-logo {
+      width: 260px;
+    }
+
+    .textpng-home {
+      width: 200px;
+    }
+
+    .hiphop {
+      width: 230px;
       margin: 0;
     }
 
-    .location-mobile {
-      padding-top: 32px;
-      font-size: 32px;
+    .tickets {
+      padding: 0;
+      margin: 0;
+      img {
+        width: 280px;
+      }
     }
 
-    .time-remaining {
-      h1 {
-        font-size: 64px;
-      }
-      p {
-        font-size: 20px;
-      }
+    .location-mobile {
+      display: none;
     }
 
     .show-more {

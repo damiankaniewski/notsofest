@@ -7,19 +7,29 @@
             :animate="{opacity: 1, scale: 1.0, x: 0}"
             :transition="{ duration: 0.4, delay: 0.3, type: spring, stiffness: 120}"
         >
-            <p v-if="!scrolledDown && !openedMenu">15.11.2025</p>
-            <motion.img 
-                v-else 
-                :src="logo"
-                :initial="{ opacity: 0, x: 100}"
-                :animate="{opacity: 1, scale: 1.0, x: 0, rotate: [-1, 1, -1]}"
-                :transition="{ duration: 0.4, delay: 0.1, type: spring, stiffness: 120,
-                    rotate: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1},
-                    scale: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1}
-                }"
-                alt="NotSoFest logo" 
-                class="logo-scrolled"
+            <img 
+                v-if="!scrolledDown && !openedMenu"
+                :src="date"
+                :initial="{ opacity: 0, scale: 0.8}"
+                :animate="{ opacity: 1, scale: 1}"
+                :transition="{ duration: 0.4, delay: 0.1, type: spring, stiffness: 120}"
+                class="textpng"
+                alt="15.11.2025"
             />
+            <a href="/"  v-else>
+                <motion.img 
+                    :src="logo"
+                    :initial="{ opacity: 0, x: 100}"
+                    :animate="{opacity: 1, scale: 1.0, x: 0, rotate: [-1, 1, -1]}"
+                    :transition="{ duration: 0.4, delay: 0.1, type: spring, stiffness: 120,
+                        rotate: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1},
+                        scale: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1}
+                    }"
+                    alt="NotSoFest logo" 
+                    class="logo-scrolled"
+                />
+            </a>
+            
         </motion.div>
         <motion.div 
             class="center"
@@ -38,7 +48,16 @@
             :animate="{ opacity: 1, scale: 1.0, y: 0}"
             :transition="{ duration: 0.4, delay: 0.2, type: spring, stiffness: 120}"
         >
-            <a v-show="!scrolledDown && !openedMenu" href="https://www.google.com/maps/place/Klub+Studencki+%C5%BBaczek/@50.0527269,19.9179119,4833m/data=!3m1!1e3!4m6!3m5!1s0x47165b0ab06be74f:0xf3dd8c43cc3c000b!8m2!3d50.060407!4d19.9223938!16s%2Fg%2F11h0tfk2r?entry=ttu&g_ep=EgoyMDI1MDgxOC4wIKXMDSoASAFQAw%3D%3D">Kraków<br>Klub Żaczek</a>
+            <a v-if="!scrolledDown && !openedMenu" href="https://www.google.com/maps/place/Klub+Studencki+%C5%BBaczek/@50.0527269,19.9179119,4833m/data=!3m1!1e3!4m6!3m5!1s0x47165b0ab06be74f:0xf3dd8c43cc3c000b!8m2!3d50.060407!4d19.9223938!16s%2Fg%2F11h0tfk2r?entry=ttu&g_ep=EgoyMDI1MDgxOC4wIKXMDSoASAFQAw%3D%3D">
+                <motion.img 
+                    :src="place"
+                    :initial="{ opacity: 0, scale: 0.8}"
+                    :animate="{ opacity: 1, scale: 1}"
+                    :transition="{ duration: 0.4, delay: 0.1, type: spring, stiffness: 120}"
+                    class="textpng"
+                    alt="Kraków klub żaczek"
+                />
+            </a>
             <button v-if="!openedMenu" @click="handleOpenedMenu">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -53,6 +72,8 @@
     import { defineEmits, onMounted, onUnmounted, ref } from "vue";
     import { motion, spring } from "motion-v";
     import logo from "../../assets/logo.png";
+    import date from "../../assets/home/date.png";
+    import place from "../../assets/home/place.png";
 
     const emit = defineEmits(['toggle-menu']);
 
@@ -60,7 +81,7 @@
     const openedMenu = ref(false);
 
     const handleScroll = () => {
-        scrolledDown.value = window.scrollY >= 100;
+        scrolledDown.value = window.scrollY >= 50;
     };
 
     const handleOpenedMenu = () => {
@@ -103,12 +124,6 @@
         align-items: center;
         text-align: center;
         color: #FD7622;
-        
-        img {
-            z-index: 20;
-            height: 200px;
-            width: auto;
-        }
 
         a{
             pointer-events: all;
@@ -134,10 +149,21 @@
         }
     }
 
+    .textpng {
+        height: 40px;
+        width: auto;
+    }
+
     .center {
         padding: 0;
         justify-self: center;
         align-self: center;
+
+        img {
+            z-index: 20;
+            height: 200px;
+            width: auto;
+        }
     }
     
     .right {
@@ -146,13 +172,14 @@
 
     .logo-scrolled {
         padding: 0 40px;
+        max-width: 200px;
     }
 
     .left-scrolled {
         padding: 0;
     }
 
-    @media(max-width: 1024px) {
+    @media(max-width: 1280px) {
         .right {
             a {
                 display: none;
@@ -161,15 +188,8 @@
     }
 
     @media(max-width: 768px) {
-        .left {
+        .textpng {
             display: none;
-        }
-
-        .center, .left-scrolled {
-            display: flex;
-            img {
-                height: 100px;
-            }
         }
 
         .right {
@@ -186,6 +206,7 @@
 
         .logo-scrolled {
             padding: 0 12px;
+            max-width: 100px;
         }
     }
 

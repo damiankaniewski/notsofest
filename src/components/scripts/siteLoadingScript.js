@@ -9,10 +9,12 @@ export function loadingStatus(introPion, intro){
     const startAnimation = ref(false);
     const animationEnded = ref(false);
 
-    const currentIntro = ref(intro);
+    const currentIntro = ref(intro); 
+
+    const introWasAlreadyPlayed = sessionStorage.getItem("IntroPlayed") === "true";
 
     const updateVideo = () => {
-    currentIntro.value = window.innerWidth <= 1024 ? introPion : intro;
+        currentIntro.value = window.innerWidth <= 1024 ? introPion : intro;
     };
 
     const handleVideoLoad = () => {
@@ -25,6 +27,7 @@ export function loadingStatus(introPion, intro){
 
     const handleVideoEnd = () => {
         videoEnded.value = true;
+        sessionStorage.setItem("IntroPlayed", "true");
     };
 
     const handleAnimationEnd = () => {
@@ -45,6 +48,11 @@ export function loadingStatus(introPion, intro){
             minLoadingTime.value = true;
             window.addEventListener("keydown", handleVideoEnd);
             window.addEventListener("wheel", handleVideoEnd);
+
+            if (introWasAlreadyPlayed) {
+            videoEnded.value = true;
+            introLoaded.value = true;
+        }
         }, 800);
     });
 

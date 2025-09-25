@@ -292,6 +292,13 @@ async function handleSubmit() {
     }
   }
 }
+
+@media (max-width: 1024px) {
+  .contact-form {
+    margin-top: 100px;
+  }
+}
+
 @media (max-width: 768px) {
   .contact-page {
     padding: 0;
@@ -299,6 +306,7 @@ async function handleSubmit() {
     width: 100%;
 
     .contact-form {
+      margin: 0;
       width: 90%;
       max-width: 90%;
 

@@ -214,7 +214,7 @@
   }
 
   .main-logo {
-    width: 500px;
+    width: 460px;
     height: auto;
   }
 
@@ -243,6 +243,7 @@
     height: 100%;
     padding: 16px;
     padding-top: 4rem;
+    margin-top: 70px;
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -265,7 +266,7 @@
     padding: 16px 32px;
 
     img {
-      width: 900px;
+      width: 780px;
       height: auto;
     }
   }

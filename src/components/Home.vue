@@ -214,7 +214,6 @@
   .hiphop {
     width: 500px;
     height: auto;
-    margin-bottom: 8px;
   }
 
   .main-logo {
@@ -240,7 +239,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100svh;
     height: auto;
   }
 
@@ -265,9 +264,8 @@
 
   .tickets {
     border: none;
-    margin-top: 8px;
     border-radius: 15px;
-    padding: 16px 32px;
+    padding-bottom: 16px;
 
     img {
       width: 700px;
@@ -277,7 +275,6 @@
 
   .tickets:hover {
     scale: 1.05;
-    background: #793610;
     cursor: poinrgb(56, 27, 8)
   }
 
@@ -304,6 +301,20 @@
 
   .location-mobile {
     display: none;
+  }
+
+  @media (max-width: 1536px){
+    .hiphop {
+      width: 260px;
+    }
+    .main-logo {
+      width: 300px;
+    }
+    .tickets {
+      img {
+        width: 360px;
+      }
+    }
   }
 
   @media (max-width: 1280px) {

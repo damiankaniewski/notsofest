@@ -182,6 +182,10 @@
 </script>
 
 <style lang="scss" scoped>
+  #home {
+    overflow-y: visible;
+  }
+
   .intro {
     display: flex;
     position: fixed;
@@ -208,7 +212,7 @@
   }
 
   .hiphop {
-    width: 600px;
+    width: 500px;
     height: auto;
     margin-bottom: 8px;
   }
@@ -229,21 +233,21 @@
   }
 
   .overlay {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
     background: rgba(0, 0, 0, 0.5);
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    height: auto;
   }
 
   .main-view {
-    height: 100%;
+    flex: 1;
     padding: 16px;
-    padding-top: 4rem;
-    margin-top: 70px;
+    margin-top: 88px;
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -266,7 +270,7 @@
     padding: 16px 32px;
 
     img {
-      width: 780px;
+      width: 700px;
       height: auto;
     }
   }

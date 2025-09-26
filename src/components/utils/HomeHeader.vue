@@ -2,13 +2,13 @@
     <header class="header">
         <motion.div
             class="left"
-            :class="{ 'left-scrolled': scrolledDown || openedMenu}"
+            :class="{ 'left-scrolled': scrolledDown || openedMenu || mobileView}"
             :initial="{ opacity: 0, x: -200}"
             :animate="{opacity: 1, scale: 1.0, x: 0}"
             :transition="{ duration: 0.4, delay: 0.3, type: spring, stiffness: 120}"
         >
             <img 
-                v-if="!scrolledDown && !openedMenu"
+                v-if="!scrolledDown && !openedMenu && !mobileView"
                 :src="date"
                 :initial="{ opacity: 0, scale: 0.8}"
                 :animate="{ opacity: 1, scale: 1}"
@@ -31,17 +31,8 @@
             </a>
             
         </motion.div>
-        <motion.div 
-            class="center"
-            :initial="{ opacity: 0, x: 1000}"
-            :animate="{opacity: 1, scale: [1.05, 1.0, 1.05], x: 0, rotate: [-0.5, 0.5, -0.5]}"
-            :transition="{ duration: 0.4, delay: 0.1, type: spring, stiffness: 120,
-                rotate: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1},
-                scale: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1}
-            }"
-        >
-            <img v-if="!scrolledDown && !openedMenu" :src="logo" alt="NotSoFest logo">
-        </motion.div>
+        <div>
+        </div>
         <motion.div 
             class="right"
             :initial="{ opacity: 0, scale: 1.2, y: -200}"
@@ -79,10 +70,15 @@
 
     const scrolledDown = ref(false);
     const openedMenu = ref(false);
+    const mobileView = ref(window.innerWidth <= 768);
 
     const handleScroll = () => {
         scrolledDown.value = window.scrollY >= 50;
     };
+
+    const handleResize = () => {
+        mobileView.value = window.innerWidth <= 768;
+    }
 
     const handleOpenedMenu = () => {
         openedMenu.value = true;
@@ -95,10 +91,12 @@
     }
 
     onMounted(() => {
+        window.addEventListener("resize", handleResize);
         window.addEventListener("scroll", handleScroll);
     });
 
     onUnmounted(() => {
+        window.removeEventListener("resize", handleResize);
         window.removeEventListener("scroll", handleScroll);
     });
 
@@ -113,7 +111,7 @@
         position: fixed;
         display: grid;
         grid-template-columns: 1fr auto 1fr;
-        height: 140px;
+        height: 200px;
         width: 100%;
     }
     
@@ -188,6 +186,10 @@
     }
 
     @media(max-width: 768px) {
+        .header {
+            height: 140px;
+        }
+
         .textpng {
             display: none;
         }

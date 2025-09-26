@@ -19,6 +19,7 @@ body {
 a {
   text-decoration: none;
   color: #fd7622;
+  transition: scale 0.3s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 a:hover {

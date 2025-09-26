@@ -136,6 +136,7 @@
             cursor: pointer;
             i {
                 font-size: 64px;
+                transition: scale 0.3s ease-in-out, color 0.3s ease-in-out;
                 color: #FD7622;
             }
         }

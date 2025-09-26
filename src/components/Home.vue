@@ -317,9 +317,6 @@
       height: 100svh;
     }
 
-    .main-view {
-      margin-top: 200px;
-    }
     .tickets {
       padding: 0;
 
@@ -351,7 +348,7 @@
     }
 
     .main-view {
-      margin-top: 120px;
+      margin-top: 110px;
     }
 
     .main-logo {

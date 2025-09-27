@@ -121,7 +121,6 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
 import { motion, spring } from "motion-v";
 import AnimatedText from "./utils/AnimatedText.vue";
 

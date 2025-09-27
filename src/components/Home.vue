@@ -163,15 +163,15 @@ import Header from "./utils/HomeHeader.vue";
 import More from "./More.vue";
 import BurgerMenu from "./utils/BurgerMenu.vue";
 
-import logo from "../assets/logo.png";
-import introPion from "../assets/intro-pion.mp4";
-import intro from "../assets/intro.mp4";
-import placeholder from "../assets/placeholder.png";
+import logo from "@/assets/logo.png";
+import introPion from "@/assets/intro-pion.mp4";
+import intro from "@/assets/intro.mp4";
+import placeholder from "@/assets/placeholder.png";
 
-import place from "../assets/home/place.png";
-import main_logo from "../assets/home/main_logo.png";
-import tickets from "../assets/home/tickets.png";
-import hiphop from "../assets/home/hiphop.png";
+import place from "@/assets/home/place.png";
+import main_logo from "@/assets/home/main_logo.png";
+import tickets from "@/assets/home/tickets.png";
+import hiphop from "@/assets/home/hiphop.png";
 
 import { loadingStatus } from "./scripts/siteLoadingScript.js";
 import { calculateCountdown } from "./scripts/calculateCountdown.js";

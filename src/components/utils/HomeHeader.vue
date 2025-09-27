@@ -87,9 +87,9 @@
 <script setup>
 import { defineEmits, onMounted, onUnmounted, ref } from "vue";
 import { motion, spring } from "motion-v";
-import logo from "../../assets/logo.png";
-import date from "../../assets/home/date.png";
-import place from "../../assets/home/place.png";
+import logo from "../@/assets/logo.png";
+import date from "../@/assets/home/date.png";
+import place from "../@/assets/home/place.png";
 
 const emit = defineEmits(["toggle-menu"]);
 

@@ -35,7 +35,7 @@
 
 <script setup>
 import { motion } from "motion-v";
-import logo from "../../assets/logo.png";
+import logo from "../@/assets/logo.png";
 </script>
 
 <style lang="scss" scoped>

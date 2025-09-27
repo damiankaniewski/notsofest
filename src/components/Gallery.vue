@@ -88,12 +88,12 @@ const modules = [Pagination, Navigation];
   opacity: 1;
 }
 .swiper-pagination-bullet-active {
-  background-color: #fd7622 !important;
+  background-color: #f16621 !important;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #fd7622 !important;
+  color: #f16621 !important;
   font-weight: bold !important;
 }
 </style>

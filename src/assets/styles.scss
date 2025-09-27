@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
 
-$orange-theme: #fd7622;
+$orange-theme: #f16621;
 $pitch-black: #000000;
 
 html {
@@ -18,8 +18,9 @@ body {
 
 a {
   text-decoration: none;
-  color: #fd7622;
-  transition: scale 0.3s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  color: #f16621;
+  transition: scale 0.3s ease-in-out, color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
 }
 
 a:hover {
@@ -29,7 +30,7 @@ a:hover {
 
 a:visited {
   text-decoration: none;
-  color: #fd7622;
+  color: #f16621;
 }
 
 section {

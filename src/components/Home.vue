@@ -157,7 +157,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import { motion, scale, spring } from "motion-v";
+import { motion, spring } from "motion-v";
 
 import Header from "./utils/HomeHeader.vue";
 import More from "./More.vue";
@@ -174,10 +174,6 @@ import tickets from "../assets/home/tickets.png";
 import hiphop from "../assets/home/hiphop.png";
 
 import { loadingStatus } from "./scripts/siteLoadingScript.js";
-import { calculateCountdown } from "./scripts/calculateCountdown.js";
-
-const eventDate = new Date("2025-11-15T12:00:00");
-const { timeRemaining } = calculateCountdown(eventDate);
 
 const {
   videoEnded,
@@ -227,6 +223,7 @@ onUnmounted(() => {
   position: fixed;
   justify-content: center;
   object-fit: cover;
+  z-index: 100;
   width: 100%;
   height: 100%;
 }

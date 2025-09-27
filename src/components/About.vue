@@ -89,7 +89,7 @@
 import { motion, spring } from "motion-v";
 import AnimatedText from "./utils/AnimatedText.vue";
 import SubHeader from "./utils/SubdomainHeader.vue";
-import logo from "@/assets/logo.png";
+import logo from "../assets/logo.png";
 </script>
 
 <style lang="scss" scoped>

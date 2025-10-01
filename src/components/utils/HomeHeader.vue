@@ -203,22 +203,11 @@ onUnmounted(() => {
   padding: 0;
 }
 
-@media (max-width: 1280px) {
-  .right {
-    a {
-      display: none;
-    }
-  }
-}
-
 @media (max-width: 768px) {
   .header {
     height: 140px;
   }
 
-  .textpng {
-    display: none;
-  }
 
   .right {
     padding: 36px 12px;

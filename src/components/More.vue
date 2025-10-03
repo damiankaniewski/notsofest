@@ -41,8 +41,7 @@
           </motion.p>
           <div class="text-content">
             <AnimatedText
-              text="Koncert, który łączy pasję do hip-hopu z klimatem prawdziwego spotkania fanów muzyki. Na scenie usłyszysz dynamiczne bity, teksty opowiadające historie z życia i energię, która stopniowo wciąga w rytm.
-                                        To wieczór pełen muzyki, kontaktu z publicznością i momentów, które zostają w pamięci jeszcze długo po ostatnim kawałku."
+              text="Not So Fest to wyjątkowe wydarzenie poświęcone kulturze hip-hop, które łączy ze sobą różne formy sztuki ulicznej. Stawiamy na promocję artystów oraz budowanie społeczności ludzi zafascynowanych rapem, tańcem, graffiti i szeroko pojętą kulturą hip-hopową. Podczas nadchodzącej edycji będziecie mogli przeżyć koncerty rapowe na żywo, a także emocjonujące bitwy freestyle, street dance i beatbox. Przygotowaliśmy również dodatkowe atrakcje, które podkręcą klimat i sprawią, że na pewno znajdziecie tu coś dla siebie. To świetna okazja, by poczuć prawdziwą energię hip-hopu i stać się częścią tej unikalnej sceny."
             >
             </AnimatedText>
           </div>
@@ -71,8 +70,11 @@
           <div class="text-content">
             <AnimatedText
               delay="0.4"
-              text="MC's i DJ-e, którzy wiedzą, jak poprowadzić publiczność przez całą muzyczną podróż. W składzie pojawią się zarówno wykonawcy, którzy mają już swoje miejsce na scenie, jak i ci, którzy dopiero pokazują swój potencjał.
-                                        Wspólnie tworzą mieszankę różnych stylów i brzmień, dzięki czemu każdy znajdzie tu coś dla siebie."
+              text="Nasze wydarzenie jest budowane przez szereg ambitnych oraz kreatywnych osób, które nie wyobrażają sobie codzienności bez tworzenia! Na scenie pojawią się zarówno doświadczeni wyjadacze, jak i głodni wrażeń debiutanci. 
+                Na najbliższym wydarzeniu zagrają dla Was: VBS, Per Dżinn & Żupan, Loki, Flossy, Hoszo&Gabbana, DJ RODO, DJ Sasin i inni. 
+                Wśród jurorów poszczególnych bitew znajdą się takie postacie jak: Kaczorex (Street dance), Sznajder (Beatbox) czy Paramaxil (Freestyle). 
+                Dodatkowe atrakcje zapewnią: Grind.sz8, HVPPY TATTOO, NYNX.T, GEMYBAJERY, Blockk Studio, Vandal Jewelry, Gmanji oraz Szoraj Burger.
+                "
             >
             </AnimatedText>
           </div>
@@ -145,7 +147,6 @@ const props = defineProps({
 .main-view {
   height: 100%;
   padding: 16px;
-  padding-top: 4rem;
   display: flex;
   text-align: center;
   flex-direction: column;
@@ -170,7 +171,7 @@ const props = defineProps({
 }
 
 .text-content {
-  font-size: 20px;
+  font-size: 18px;
   color: #fed1b6;
   max-width: 54rem;
   margin: 0 auto;
@@ -199,10 +200,6 @@ iframe {
 @media (max-width: 1024px) {
   .text-content {
     font-size: 18px;
-  }
-
-  .main-view {
-    padding-top: 0;
   }
 
   iframe {

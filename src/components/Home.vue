@@ -255,7 +255,8 @@ onUnmounted(() => {
 .main-view {
   flex: 1;
   padding: 16px;
-  margin-top: 88px;
+  padding-top: 0;
+  margin-top: 160px;
   display: flex;
   text-align: center;
   flex-direction: column;
@@ -313,14 +314,15 @@ onUnmounted(() => {
 
 @media (max-width: 1280px) {
   .tickets {
-    padding: 8px 128px;
+    padding: 4px 128px;
 
     h1 {
-      font-size: 64px;
+      font-size: 60px;
     }
   }
 
   .time-remaining {
+    margin-top: -12px;
     h1 {
       font-size: 66px;
     }
@@ -358,7 +360,7 @@ onUnmounted(() => {
   }
 
   .location-mobile {
-    font-size: 20px;
+    font-size: 24px;
     margin: 0;
   }
 
@@ -371,12 +373,13 @@ onUnmounted(() => {
   }
 
   .time-remaining {
+    margin-top: 0;
     h1 {
       font-size: 46px;
     }
 
     p {
-      font-size: 18px;
+      font-size: 24px;
     }
   }
 

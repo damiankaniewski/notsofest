@@ -116,7 +116,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import { motion, scale, spring } from "motion-v";
+import { motion, spring } from "motion-v";
 import { calculateCountdown } from "./scripts/calculateCountdown.js";
 
 import Header from "./utils/HomeHeader.vue";
@@ -141,7 +141,7 @@ const {
   handleAnimationEnd,
 } = loadingStatus(introPion, intro);
 
-const eventDate = new Date("2025-10-06T12:00:00");
+const eventDate = new Date("2025-11-15T17:00:00");
 const { timeRemaining } = calculateCountdown(eventDate);
 
 const menuVisible = ref(false);

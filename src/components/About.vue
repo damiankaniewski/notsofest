@@ -117,7 +117,7 @@ import logo from "../assets/logo.png";
   color: orange;
 
   .title {
-    color: #f16621;
+    color: #FF6600;
     padding-left: 1rem;
     font-size: 96px;
     margin-bottom: 0;

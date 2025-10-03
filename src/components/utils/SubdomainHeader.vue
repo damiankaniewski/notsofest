@@ -43,7 +43,7 @@ a {
   cursor: pointer;
 }
 i {
-  color: #f16621;
+  color: #FF6600;
   font-size: 64px;
 }
 

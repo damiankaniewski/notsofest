@@ -1,8 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
 
-$orange-theme: #f16621;
-$pitch-black: #000000;
-
 html {
   scroll-behavior: smooth;
 }
@@ -18,7 +15,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #f16621;
+  color: #FF6600;
   transition: scale 0.3s ease-in-out, color 0.3s ease-in-out,
     background-color 0.3s ease-in-out;
 }
@@ -30,7 +27,7 @@ a:hover {
 
 a:visited {
   text-decoration: none;
-  color: #f16621;
+  color: #FF6600;
 }
 
 section {

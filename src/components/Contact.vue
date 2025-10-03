@@ -161,7 +161,7 @@ async function handleSubmit() {
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
-  color: #f16621;
+  color: #FF6600;
   overflow-y: auto;
 
   .contact-form {
@@ -178,11 +178,11 @@ async function handleSubmit() {
         color: white;
 
         &::placeholder {
-          color: #f16621;
+          color: #FF6600;
         }
 
         &:focus {
-          border-bottom-color: #f16621;
+          border-bottom-color: #FF6600;
         }
       }
 
@@ -211,7 +211,7 @@ async function handleSubmit() {
 
     button {
       padding: 0.75rem;
-      background-color: #f16621;
+      background-color: #FF6600;
       width: 100%;
       color: white;
       font-weight: bold;
@@ -227,7 +227,7 @@ async function handleSubmit() {
 
       &:hover:enabled {
         background-color: #ffffff;
-        color: #f16621;
+        color: #FF6600;
       }
     }
   }

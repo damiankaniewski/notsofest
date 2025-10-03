@@ -225,7 +225,7 @@ onUnmounted(() => {
 }
 
 .tickets {
-    background-color: #f16621;
+    background-color: #FF6600;
     padding: 24px 164px;
     border-radius: 15px;
 
@@ -262,7 +262,7 @@ onUnmounted(() => {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  color: #f16621;
+  color: #FF6600;
 }
 
 .center-content {

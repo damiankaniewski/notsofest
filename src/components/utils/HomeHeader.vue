@@ -175,7 +175,7 @@ onUnmounted(() => {
   gap: 20px;
   align-items: center;
   text-align: center;
-  color: #f16621;
+  color: #FF6600;
 
   a {
     pointer-events: all;
@@ -191,7 +191,7 @@ onUnmounted(() => {
     i {
       font-size: 64px;
       transition: scale 0.3s ease-in-out, color 0.3s ease-in-out;
-      color: #f16621;
+      color: #FF6600;
     }
   }
   button:hover {

@@ -7,7 +7,7 @@
       :animate="{ opacity: 1, scale: 1.0, x: 0 }"
       :transition="{ duration: 0.4, delay: 0.3, type: spring, stiffness: 120 }"
     >
-      <img
+      <h1
         v-if="!scrolledDown && !openedMenu && !mobileView"
         :src="date"
         :initial="{ opacity: 0, scale: 0.8 }"
@@ -18,9 +18,9 @@
           type: spring,
           stiffness: 120,
         }"
-        class="textpng"
-        alt="15.11.2025"
-      />
+      >
+        15.11.2025
+      </h1>
       <a href="/" v-else>
         <motion.img
           :src="logo"
@@ -49,7 +49,34 @@
         />
       </a>
     </motion.div>
-    <div></div>
+    <div>
+      <motion.img
+          v-if="!mobileView && !openedMenu && !scrolledDown"
+          :src="logo"
+          :initial="{ opacity: 0, y: -100 }"
+          :animate="{ opacity: 1, scale: 1.0, y: 0, rotate: [-1, 1, -1] }"
+          :transition="{
+            duration: 0.4,
+            delay: 0.1,
+            type: spring,
+            stiffness: 120,
+            rotate: {
+              repeat: Infinity,
+              duration: 2,
+              ease: 'easeInOut',
+              delay: 1,
+            },
+            scale: {
+              repeat: Infinity,
+              duration: 2,
+              ease: 'easeInOut',
+              delay: 1,
+            },
+          }"
+          alt="NotSoFest logo"
+          class="logo-scrolled"
+        />
+    </div>
     <motion.div
       class="right"
       :initial="{ opacity: 0, scale: 1.2, y: -200 }"
@@ -60,8 +87,7 @@
         v-if="!scrolledDown && !openedMenu"
         href="https://www.google.com/maps/place/Klub+Studencki+%C5%BBaczek/@50.0527269,19.9179119,4833m/data=!3m1!1e3!4m6!3m5!1s0x47165b0ab06be74f:0xf3dd8c43cc3c000b!8m2!3d50.060407!4d19.9223938!16s%2Fg%2F11h0tfk2r?entry=ttu&g_ep=EgoyMDI1MDgxOC4wIKXMDSoASAFQAw%3D%3D"
       >
-        <motion.img
-          :src="place"
+        <motion.h1
           :initial="{ opacity: 0, scale: 0.8 }"
           :animate="{ opacity: 1, scale: 1 }"
           :transition="{
@@ -70,9 +96,10 @@
             type: spring,
             stiffness: 120,
           }"
-          class="textpng"
-          alt="Kraków klub żaczek"
-        />
+          class="location"
+        >
+          Kraków <br/> Klub Żaczek
+        </motion.h1>
       </a>
       <button v-if="!openedMenu" @click="handleOpenedMenu">
         <i class="fa-solid fa-bars"></i>
@@ -89,7 +116,6 @@ import { onMounted, onUnmounted, ref } from "vue";
 import { motion, spring } from "motion-v";
 import logo from "../../assets/logo.png";
 import date from "../../assets/home/date.png";
-import place from "../../assets/home/place.png";
 
 const emit = defineEmits(["toggle-menu"]);
 
@@ -138,6 +164,11 @@ onUnmounted(() => {
   width: 100%;
 }
 
+  h1 {
+    font-size: 32px;
+    margin: 0;
+  }
+
 .left,
 .center,
 .right {
@@ -173,11 +204,6 @@ onUnmounted(() => {
   }
 }
 
-.textpng {
-  height: 40px;
-  width: auto;
-}
-
 .center {
   padding: 0;
   justify-self: center;
@@ -201,6 +227,12 @@ onUnmounted(() => {
 
 .left-scrolled {
   padding: 0;
+}
+
+@media (max-width: 1024px) {
+  .location {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {

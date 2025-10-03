@@ -51,31 +51,31 @@
     </motion.div>
     <div>
       <motion.img
-          v-if="!mobileView && !openedMenu && !scrolledDown"
-          :src="logo"
-          :initial="{ opacity: 0, y: -100 }"
-          :animate="{ opacity: 1, scale: 1.0, y: 0, rotate: [-1, 1, -1] }"
-          :transition="{
-            duration: 0.4,
-            delay: 0.1,
-            type: spring,
-            stiffness: 120,
-            rotate: {
-              repeat: Infinity,
-              duration: 2,
-              ease: 'easeInOut',
-              delay: 1,
-            },
-            scale: {
-              repeat: Infinity,
-              duration: 2,
-              ease: 'easeInOut',
-              delay: 1,
-            },
-          }"
-          alt="NotSoFest logo"
-          class="logo-scrolled"
-        />
+        v-if="!mobileView && !openedMenu && !scrolledDown"
+        :src="logo"
+        :initial="{ opacity: 0, y: -100 }"
+        :animate="{ opacity: 1, scale: 1.0, y: 0, rotate: [-1, 1, -1] }"
+        :transition="{
+          duration: 0.4,
+          delay: 0.1,
+          type: spring,
+          stiffness: 120,
+          rotate: {
+            repeat: Infinity,
+            duration: 2,
+            ease: 'easeInOut',
+            delay: 1,
+          },
+          scale: {
+            repeat: Infinity,
+            duration: 2,
+            ease: 'easeInOut',
+            delay: 1,
+          },
+        }"
+        alt="NotSoFest logo"
+        class="logo-scrolled"
+      />
     </div>
     <motion.div
       class="right"
@@ -169,7 +169,6 @@ onUnmounted(() => {
   }
 
 .left,
-.center,
 .right {
   display: flex;
   padding: 36px 40px;
@@ -203,18 +202,6 @@ onUnmounted(() => {
   }
 }
 
-.center {
-  padding: 0;
-  justify-self: center;
-  align-self: center;
-
-  img {
-    z-index: 20;
-    height: 200px;
-    width: auto;
-  }
-}
-
 .right {
   justify-self: end;
 }
@@ -238,7 +225,6 @@ onUnmounted(() => {
   .header {
     height: 140px;
   }
-
 
   .right {
     padding: 36px 12px;

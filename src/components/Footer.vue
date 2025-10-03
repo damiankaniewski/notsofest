@@ -36,6 +36,17 @@
         </a>
       </div>
     </div>
+    <div class="terms">
+      <a href="">
+        Polityka prywatności
+      </a>
+      <a href="">
+        Regulamin
+      </a>
+      <a href="/ZGODA RODZICA_OPIEKUNA PRAWNEGO NOT SO FEST 2025.pdf" download>
+        Zgoda rodzica
+      </a>
+    </div>
   </section>
 </template>
 <script setup></script>
@@ -66,6 +77,23 @@
       &:hover {
         color: #FF6600;
       }
+    }
+  }
+}
+
+.terms {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-size: 30px;
+  
+  a {
+    color: #222;
+
+    &:hover {
+      color: #FF6600;
     }
   }
 }

@@ -5,6 +5,9 @@ import Gallery from "../components/Gallery.vue";
 import Contact from "../components/Contact.vue";
 import Merch from "../components/Merch.vue";
 import Tickets from "../components/Tickets.vue";
+import PrivacyPolicy from "../components/PrivacyPolicy.vue";
+import RapBattles from "../components/RapBattles.vue";
+import TermsOfUse from "../components/TermsOfUse.vue";
 
 const routes  = [
     {
@@ -36,6 +39,21 @@ const routes  = [
         path: "/kontakt",
         name: "contact",
         component: Contact,
+    },
+    {
+        path: "/zglos-sie-na-bitwy",
+        name: "rap-battles",
+        component: RapBattles,
+    },
+    {
+        path: "/regulamin",
+        name: "terms-of-use",
+        component: TermsOfUse,
+    },
+    {
+        path: "/polityka-prywatnosci",
+        name: "privacy-policy",
+        component: PrivacyPolicy,
     }
 ];
 

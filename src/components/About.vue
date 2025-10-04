@@ -26,19 +26,12 @@
         <AnimatedText
           class="content"
           delay="0.4"
-          text="Nootsofest to ekipa, która łączy energię ulicy z nowoczesnym brzmieniem.
-                    Tworzymy muzykę, w której bity pulsują w rytmie miasta, a teksty opowiadają nasze historie — szczere, surowe i bez filtrów.
-                    Każdy z nas wnosi do składu swój unikalny styl: od soczystych punchline'ów, przez melodyjne refreny, po produkcje, które wkręcają się w głowę na długo.
-                    Nie gonimy za trendami — wyznaczamy własne.
-                    Inspirujemy się kulturą hip-hopu w najczystszej formie, ale nie boimy się mieszać gatunków, eksperymentować i zaskakiwać.
-                    Nasze koncerty to mieszanka adrenaliny, kontaktu z publiką i energii, która nie pozwala stać w miejscu.
-                    Notsofest to nie tylko muzyka — to wspólnota ludzi, którzy czują ten sam vibe.
-                    Jeśli chcesz poczuć prawdziwy hip-hop w wersji 2025, jesteś we właściwym miejscu."
+          text="Not So to sześcioosobowa ekipa przyjaciół, którą połączyła wspólna pasja do muzyki i kultury hip-hop. Tworzymy wspólne numery, gramy razem koncerty, rozwijamy własne projekty ale przede wszystkim budujemy Not So Fest. Chcemy, żeby nasz festiwal stał się przestrzenią, gdzie można spróbować swoich sił na scenie, poczuć emocje związane z występami na żywo i spotkać ludzi, którzy lubią się bawić w ten sposób. Wierzymy, że dzięki wspólnej energii i zaangażowaniu uda się nam stworzyć wydarzenie, które nie tylko pokazuje hip-hop w najlepszym wydaniu, ale też daje szansę na rozwój i odkrywanie nowych talentów."
         ></AnimatedText>
       </div>
       <div class="links-box">
         <motion.a
-          href="/bilety"
+          href="https://www.facebook.com/events/1068622162120392/?acontext=%7B%22event_action_history%22%3A[%7B%22extra_data%22%3A%22%22%2C%22mechanism%22%3A%22left_rail%22%2C%22surface%22%3A%22bookmark%22%7D%2C%7B%22extra_data%22%3A%22%22%2C%22mechanism%22%3A%22left_rail%22%2C%22surface%22%3A%22bookmark%22%7D%2C%7B%22extra_data%22%3A%22%22%2C%22mechanism%22%3A%22surface%22%2C%22surface%22%3A%22create_dialog%22%7D]%2C%22ref_notif_type%22%3Anull%7D&onload_action=open_invite_flow&show_created_event_toast=true&locale=pl_PL"
           :initial="{ opacity: 0, scale: 0.8 }"
           :animate="{ opacity: 1, scale: 1.0 }"
           :transition="{
@@ -52,7 +45,7 @@
           <p>Festiwal</p>
         </motion.a>
         <motion.a
-          href="/galeria"
+          href="https://open.spotify.com/artist/3kSJYvdGqUyCbvCJVYk5c9?si=If4s-PsxRBG6LQ-4CTBcTg"
           class="center"
           :initial="{ opacity: 0, scale: 0.8 }"
           :animate="{ opacity: 1, scale: 1.0 }"
@@ -67,7 +60,7 @@
           Muzyka
         </motion.a>
         <motion.a
-          href="/merch"
+          href="https://www.instagram.com/notsowear/"
           :initial="{ opacity: 0, scale: 0.8 }"
           :animate="{ opacity: 1, scale: 1.0 }"
           :transition="{

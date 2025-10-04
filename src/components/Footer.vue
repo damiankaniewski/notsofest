@@ -37,10 +37,10 @@
       </div>
     </div>
     <div class="terms">
-      <a href="">
+      <a href="/polityka-prywatnosci">
         Polityka prywatności
       </a>
-      <a href="">
+      <a href="/regulamin">
         Regulamin
       </a>
       <a href="/ZGODA RODZICA_OPIEKUNA PRAWNEGO NOT SO FEST 2025.pdf" download>
@@ -87,7 +87,7 @@
   justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
-  font-size: 30px;
+  font-size: 1.4rem;
   
   a {
     color: #222;

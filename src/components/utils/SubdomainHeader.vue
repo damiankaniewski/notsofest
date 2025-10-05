@@ -53,6 +53,7 @@ i {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
+  pointer-events: none;
   height: 140px;
   width: 100%;
 
@@ -61,6 +62,12 @@ i {
     padding: 36px 40px;
     align-items: center;
     text-align: center;
+  }
+
+  .left {
+    a {
+        pointer-events: all;
+    }
   }
   .right {
     padding: 0 40px;

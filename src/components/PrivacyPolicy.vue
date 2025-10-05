@@ -313,7 +313,8 @@
   @media (max-width: 1024px){
     .main-view {
       div {
-        width: 60%;
+        width: 70%;
+        padding-left: 10rem;
       }
     }
     h1 {

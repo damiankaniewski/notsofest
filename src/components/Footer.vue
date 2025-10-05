@@ -111,5 +111,9 @@
       }
     }
   }
+  
+  .terms {
+    flex-direction: column;
+  }
 }
 </style>

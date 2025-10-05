@@ -141,7 +141,7 @@ const {
   handleAnimationEnd,
 } = loadingStatus(introPion, intro);
 
-const eventDate = new Date("2025-11-15T17:00:00");
+const eventDate = new Date("2025-11-15T17:00:00+01:00");
 const { timeRemaining } = calculateCountdown(eventDate);
 
 const menuVisible = ref(false);

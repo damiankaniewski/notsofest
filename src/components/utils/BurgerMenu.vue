@@ -3,12 +3,6 @@
         <section class="burger-overlay">
             <motion.div class="burger-items" initial="">
                 <motion.a
-                    :initial="{ x: -500 }"
-                    :animate="{ x: 0 }"
-                    :transition="{ duration: 0.2, type: spring, stiffness: 120 }"
-                    href="/o-nas"
-                >O Nas</motion.a>
-                <motion.a
                     :initial="{ x: 500 }"
                     :animate="{ x: 0 }"
                     :transition="{ duration: 0.2, type: spring, stiffness: 120 }"
@@ -18,14 +12,26 @@
                     :initial="{ x: -500 }"
                     :animate="{ x: 0 }"
                     :transition="{ duration: 0.2, type: spring, stiffness: 120 }"
-                    href="/galeria"
-                >Galeria</motion.a>
+                    href="/zglos-sie-na-bitwy"
+                >Zgłoś się na<br/>bitwy</motion.a>
                 <motion.a
                     :initial="{ x: 500 }"
                     :animate="{ x: 0 }"
                     :transition="{ duration: 0.2, type: spring, stiffness: 120 }"
+                    href="/galeria"
+                >Galeria</motion.a>
+                <motion.a
+                    :initial="{ x: -500 }"
+                    :animate="{ x: 0 }"
+                    :transition="{ duration: 0.2, type: spring, stiffness: 120 }"
                     href="/Merch"
                 >Merch</motion.a>
+                <motion.a
+                    :initial="{ x: 500 }"
+                    :animate="{ x: 0 }"
+                    :transition="{ duration: 0.2, type: spring, stiffness: 120 }"
+                    href="/o-nas"
+                >O Nas</motion.a>
                 <motion.a
                     :initial="{ x: -500 }"
                     :animate="{ x: 0 }"
@@ -57,12 +63,20 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    gap: 1rem;
     font-size: 64px;
+  }
+
+  @media(max-width: 1280px){
+    .burger-items{
+      font-size: 48px;
+    }
   }
 
   @media (max-width: 768px) {
     .burger-items {
-      font-size: 56px;
+      gap: 0.8rem;
+      font-size: 42px;
     }
   }
   

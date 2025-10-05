@@ -34,7 +34,7 @@ import { Pagination, Navigation } from "swiper/modules";
 
 // zdjęcia
 const photos = Object.values(
-  import.meta.glob("../assets/photos/*.webp", {
+  import.meta.glob("@/assets/photos/*.webp", {
     eager: true,
     import: "default",
   })

@@ -26,10 +26,13 @@
 </script>
 
 <style lang="scss" scoped>
+
     .main-view {
+        margin-top: 140px;
         display: flex;
         flex: 1;
-        min-height: 100svh;
+        height: 100%;
+        min-height: calc(100svh - 140px);
         align-items: center;
         justify-content: center;
         

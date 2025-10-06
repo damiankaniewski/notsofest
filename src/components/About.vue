@@ -72,7 +72,7 @@ import { motion, spring } from "motion-v";
 import AnimatedText from "./utils/AnimatedText.vue";
 import SubHeader from "./utils/SubdomainHeader.vue";
 import logo from "../assets/logo.png";
-import muzyka from "../assets/about/MUZYKA.svg";
+import muzyka from "../assets/about/MUZYKA.png";
 import ubrania from "../assets/about/Ubrania.png";
 </script>
 
@@ -122,8 +122,8 @@ import ubrania from "../assets/about/Ubrania.png";
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12rem;
-  padding-top: 8rem;
+  gap: 6rem;
+  padding-top: 12rem;
   padding-right: 7rem;
 
   a {
@@ -134,13 +134,18 @@ import ubrania from "../assets/about/Ubrania.png";
     img {
       align-self: center;
       border-radius: 15px;
-      margin-top: -64px;
-      height: 200px;
-      width: 200px;
+      margin-top: -32px;
+      height: auto;
+      width: 120px;
+    }
+
+    #muzyka-img {
+      filter: drop-shadow(2px 0 0 #ff6600) drop-shadow(-2px 0 0 #ff6600)
+        drop-shadow(0 2px 0 #ff6600) drop-shadow(0 -2px 0 #ff6600);
     }
 
     p {
-      margin: -30px;
+      margin: 0px;
       align-self: center;
     }
   }

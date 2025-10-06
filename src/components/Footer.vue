@@ -36,19 +36,27 @@
         </a>
       </div>
     </div>
+
     <div class="terms">
-      <a href="/polityka-prywatnosci">
-        Polityka prywatności
-      </a>
-      <a href="/regulamin">
-        Regulamin
-      </a>
+      <a href="/polityka-prywatnosci">Polityka prywatności</a>
+      <a href="/regulamin">Regulamin</a>
       <a href="/ZGODA RODZICA_OPIEKUNA PRAWNEGO NOT SO FEST 2025.pdf" download>
         Zgoda rodzica
       </a>
     </div>
+
+    <div class="credits">
+      <p>
+        <a href="https://policrafts.com" target="_blank">© Policrafts 2025</a> —
+        Twórca:
+        <a href="https://github.com/drdaroo" target="_blank"
+          >Dariusz Cegliński</a
+        >
+      </p>
+    </div>
   </section>
 </template>
+
 <script setup></script>
 
 <style lang="scss" scoped>
@@ -56,9 +64,10 @@
   background-color: black;
   color: white;
   max-height: 500px;
-  padding-bottom: 2rem;
+  padding-bottom: 0;
   min-height: unset;
 }
+
 .contact-info {
   margin-top: 3rem;
   text-align: center;
@@ -75,7 +84,7 @@
       transition: all 0.3s ease;
 
       &:hover {
-        color: #FF6600;
+        color: #ff6600;
       }
     }
   }
@@ -88,12 +97,31 @@
   gap: 1rem;
   margin-top: 1rem;
   font-size: 1.4rem;
-  
+
   a {
     color: #222;
 
     &:hover {
-      color: #FF6600;
+      color: #ff6600;
+    }
+  }
+}
+
+.credits {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #555;
+  padding: 0;
+  margin: 0;
+
+  a {
+    color: #555;
+    text-decoration: none;
+
+    &:hover {
+      color: #ff6600;
+      text-decoration: underline;
     }
   }
 }
@@ -111,9 +139,13 @@
       }
     }
   }
-  
+
   .terms {
     flex-direction: column;
+  }
+
+  .credits {
+    font-size: 0.8rem;
   }
 }
 </style>

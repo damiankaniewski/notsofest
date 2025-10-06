@@ -1,44 +1,14 @@
 <template>
   <transition>
     <section id="more">
-      <motion.div
-        class="return-button"
-        :class="{ loweredIndex: props.menuVisible }"
-        :initial="{ opacity: 0, scale: 0.9 }"
-        :animate="{ opacity: 1, y: [0, -10, 0], scale: 1 }"
-        :transition="{
-          duration: 0.6,
-          type: spring,
-          stiffness: 120,
-          y: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1 },
-        }"
-      >
+      <div class="return-button" :class="{ loweredIndex: props.menuVisible }">
         <a href="#home">
           <i class="fa-solid fa-chevron-up"></i>
         </a>
-      </motion.div>
+      </div>
       <div class="main-view">
         <div class="co">
-          <motion.p
-            class="titles"
-            :initial="{ opacity: 0, scale: 0.8 }"
-            :while-in-view="{ opacity: 1, scale: [1.0, 1.1, 1.0] }"
-            :transition="{
-              opacity: {
-                duration: 0.6,
-                delay: 0.2,
-                type: spring,
-                stiffness: 120,
-              },
-              scale: {
-                repeat: Infinity,
-                duration: 2,
-                ease: 'easeInOut',
-                delay: 0.2,
-              },
-            }"
-            >Co?
-          </motion.p>
+          <p class="titles">Co?</p>
           <div class="text-content">
             <AnimatedText
               text="Not So Fest to wyjątkowe wydarzenie poświęcone kulturze hip-hop, które łączy ze sobą różne formy sztuki ulicznej. Stawiamy na promocję artystów oraz budowanie społeczności ludzi zafascynowanych rapem, tańcem, graffiti i szeroko pojętą kulturą hip-hopową. Podczas nadchodzącej edycji będziecie mogli przeżyć koncerty rapowe na żywo, a także emocjonujące bitwy freestyle, street dance i beatbox. Przygotowaliśmy również dodatkowe atrakcje, które podkręcą klimat i sprawią, że na pewno znajdziecie tu coś dla siebie. To świetna okazja, by poczuć prawdziwą energię hip-hopu i stać się częścią tej unikalnej sceny."
@@ -47,26 +17,7 @@
           </div>
         </div>
         <div class="kto">
-          <motion.p
-            class="titles"
-            :initial="{ opacity: 0, scale: 0.8 }"
-            :while-in-view="{ opacity: 1, scale: [1.0, 1.1, 1.0] }"
-            :transition="{
-              opacity: {
-                duration: 0.81,
-                delay: 0.2,
-                type: spring,
-                stiffness: 120,
-              },
-              scale: {
-                repeat: Infinity,
-                duration: 2,
-                ease: 'easeInOut',
-                delay: 0.4,
-              },
-            }"
-            >Kto?
-          </motion.p>
+          <p class="titles">Kto?</p>
           <div class="text-content">
             <AnimatedText
               delay="0.4"
@@ -80,26 +31,7 @@
           </div>
         </div>
         <div class="gdzie">
-          <motion.p
-            class="titles"
-            :initial="{ opacity: 0, scale: 0.8 }"
-            :while-in-view="{ opacity: 1, scale: [1.0, 1.1, 1.0] }"
-            :transition="{
-              opacity: {
-                duration: 1,
-                delay: 0.2,
-                type: spring,
-                stiffness: 120,
-              },
-              scale: {
-                repeat: Infinity,
-                duration: 2,
-                ease: 'easeInOut',
-                delay: 0.6,
-              },
-            }"
-            >Gdzie?
-          </motion.p>
+          <p class="titles">Gdzie?</p>
           <motion.iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d33410.03784441945!2d19.9179119!3d50.0527269!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b0ab06be74f%3A0xf3dd8c43cc3c000b!2sKlub%20Studencki%20%C5%BBaczek!5e1!3m2!1spl!2spl!4v1755817200793!5m2!1spl!2spl"
             style="border: 0; border-radius: 15px; margin: 20px"

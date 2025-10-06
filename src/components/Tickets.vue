@@ -6,23 +6,7 @@
       <div v-else-if="error" id="error">{{ error }}</div>
       <div v-else>
         <div v-for="event in events" :key="event.id" class="event">
-          <motion.h1
-            :initial="{ scale: 0.9, opacity: 0 }"
-            :animate="{ scale: 1.0, opacity: 1, rotate: [-0.3, 0.3, -0.3] }"
-            :transition="{
-              delay: 0.2,
-              duration: 1,
-              type: spring,
-              stiffness: 120,
-              rotate: {
-                repeat: Infinity,
-                duration: 2,
-                ease: 'easeInOut',
-                delay: 0.4,
-              },
-            }"
-            >{{ event.title }}</motion.h1
-          >
+          <h1>{{ event.title }}</h1>
           <div class="big-container">
             <motion.div
               :initial="{ scale: 0.9, opacity: 0, x: -400 }"
@@ -64,25 +48,7 @@
                 <p>godz. 17:00</p>
               </motion.div>
               <div class="buy-ticket-box">
-                <motion.a
-                  :initial="{ scale: 0.9, opacity: 0 }"
-                  :animate="{
-                    scale: 1.0,
-                    opacity: 1,
-                    scale: isTicketActive(event) ? [1.0, 1.02, 1.0] : [1.0],
-                  }"
-                  :transition="{
-                    delay: 0.8,
-                    duration: 2,
-                    type: spring,
-                    stiffness: 120,
-                    scale: {
-                      repeat: Infinity,
-                      delay: 1,
-                      duration: 2,
-                      ease: 'easeInOut',
-                    },
-                  }"
+                <a
                   :href="
                     isTicketActive ? event.pages.reservationForm.url : null
                   "
@@ -90,7 +56,7 @@
                   @click.prevent="!isTicketActive(event) ? null : null"
                 >
                   Kup Bilet
-                </motion.a>
+                </a>
                 <motion.p v-if="event.offer.places.areLastPlaces"
                   >Ostatnie Bilety</motion.p
                 >

@@ -7,20 +7,6 @@
           class="title"
           :initial="{ opacity: 0, scale: 0.8 }"
           :animate="{ opacity: 1, scale: [1.0, 1.01, 1.0] }"
-          :transition="{
-            opacity: {
-              duration: 0.4,
-              delay: 0.2,
-              type: spring,
-              stiffness: 120,
-            },
-            scale: {
-              repeat: Infinity,
-              duration: 2,
-              ease: 'easeInOut',
-              delay: 0.6,
-            },
-          }"
           >O NAS</motion.h1
         >
         <AnimatedText
@@ -42,7 +28,7 @@
             stiffness: 120,
           }"
         >
-          <img :src="logo" alt="NotSoFest logo" id="logo-img"/>
+          <img :src="logo" alt="NotSoFest logo" id="logo-img" />
           <p>Festiwal</p>
         </motion.a>
         <motion.a
@@ -58,7 +44,7 @@
             stiffness: 120,
           }"
         >
-          <img :src="muzyka" alt="NOT SO FEST MUZYKA" id="muzyka-img">
+          <img :src="muzyka" alt="NOT SO FEST MUZYKA" id="muzyka-img" />
           <p>Muzyka</p>
         </motion.a>
         <motion.a
@@ -73,7 +59,7 @@
             stiffness: 120,
           }"
         >
-          <img :src="ubrania" alt="NOT SO FEST UBRANIA">
+          <img :src="ubrania" alt="NOT SO FEST UBRANIA" />
           Ubrania
         </motion.a>
       </div>
@@ -96,7 +82,7 @@ import ubrania from "../assets/about/Ubrania.png";
   width: 100%;
   display: flex;
   align-items: center;
-  padding-bottom: 4rem
+  padding-bottom: 4rem;
 }
 
 .content-box {
@@ -116,7 +102,7 @@ import ubrania from "../assets/about/Ubrania.png";
   color: orange;
 
   .title {
-    color: #FF6600;
+    color: #ff6600;
     padding-left: 1rem;
     font-size: 96px;
     margin-bottom: 0;
@@ -177,7 +163,6 @@ import ubrania from "../assets/about/Ubrania.png";
 }
 
 @media (max-width: 1280px) {
-
   #about {
     align-items: center;
     height: auto;

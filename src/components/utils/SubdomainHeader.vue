@@ -17,15 +17,6 @@
         opacity: 1,
         scale: [1.05, 1.0, 1.05],
         x: 0,
-        rotate: [-1, 1, -1],
-      }"
-      :transition="{
-        duration: 0.4,
-        delay: 0.1,
-        type: spring,
-        stiffness: 120,
-        rotate: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1 },
-        scale: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1 },
       }"
     >
       <img :src="logo" alt="NotSoFest logo" />
@@ -43,7 +34,7 @@ a {
   cursor: pointer;
 }
 i {
-  color: #FF6600;
+  color: #ff6600;
   font-size: 64px;
 }
 
@@ -66,7 +57,7 @@ i {
 
   .left {
     a {
-        pointer-events: all;
+      pointer-events: all;
     }
   }
   .right {

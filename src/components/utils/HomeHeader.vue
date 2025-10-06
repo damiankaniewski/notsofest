@@ -25,25 +25,7 @@
         <motion.img
           :src="logo"
           :initial="{ opacity: 0, x: 100 }"
-          :animate="{ opacity: 1, scale: 1.0, x: 0, rotate: [-1, 1, -1] }"
-          :transition="{
-            duration: 0.4,
-            delay: 0.1,
-            type: spring,
-            stiffness: 120,
-            rotate: {
-              repeat: Infinity,
-              duration: 2,
-              ease: 'easeInOut',
-              delay: 1,
-            },
-            scale: {
-              repeat: Infinity,
-              duration: 2,
-              ease: 'easeInOut',
-              delay: 1,
-            },
-          }"
+          :animate="{ opacity: 1, scale: 1.0, x: 0 }"
           alt="NotSoFest logo"
           class="logo-scrolled"
         />

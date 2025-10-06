@@ -103,18 +103,18 @@
 @media (max-width: 768px){
   .main-view {
     padding: 0 2rem;
-    margin-top: 80px;
+    margin-top: 30px;
   }
   h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 0;
   }
   p {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: 5rem;
   }
   a {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 }
 

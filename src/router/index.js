@@ -8,6 +8,7 @@ import Tickets from "../components/Tickets.vue";
 import PrivacyPolicy from "../components/PrivacyPolicy.vue";
 import RapBattles from "../components/RapBattles.vue";
 import TermsOfUse from "../components/TermsOfUse.vue";
+import ThankYouPage from "../components/ThankYouPage.vue";
 
 const routes  = [
     {
@@ -54,6 +55,11 @@ const routes  = [
         path: "/polityka-prywatnosci",
         name: "privacy-policy",
         component: PrivacyPolicy,
+    },
+    {
+        path: "/dziekujemy-za-zakup",
+        name: "thank-you-page",
+        component: ThankYouPage,
     }
 ];
 

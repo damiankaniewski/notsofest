@@ -54,59 +54,23 @@
               Klub Żaczek - Kraków
             </a>
             <a class="tickets" href="/bilety">
-              <h1>
-                Kup<br/>Bilet
-              </h1>
+              <h1>Kup<br />Bilet</h1>
             </a>
             <div class="time-remaining">
-              <motion.h1
-                :initial="{ opacity: 0, scale: 0.8 }"
-                :animate="{ opacity: 1, scale: 1.0, rotate: [-0.5, 0.5, -0.5]}"
-                :transition="{ duration: 0.5, delay: 0.3, type: spring, stiffness: 120,
-                  rotate: {
-                    repeat: Infinity,
-                    duration: 2,
-                    ease: 'easeInOut',
-                    delay: 0.4,
-                  }
-                 }"
-              >
-                Pozostało
-              </motion.h1>
-              <motion.p
-                 v-html="timeRemaining"
-                :initial="{ opacity: 0, scale: 1.2 }"
-                :animate="{ opacity: 1, scale: 1.0, scale: [1.0, 1.05, 1.0]}"
-                :transition="{duration: 1.2, delay: 0.6, type: spring, stiffness: 120,
-                  scale: {
-                    repeat: Infinity,
-                    duration: 2,
-                    ease: 'easeInOut',
-                    delay: 0.6
-                  }
-                 }"
-              >
-              </motion.p>
+              <h1>Pozostało</h1>
+              <p v-html="timeRemaining"></p>
             </div>
           </div>
-          <motion.div
+          <div
             href="#more"
             class="show-more"
             :class="{ loweredIndex: menuVisible }"
-            :initial="{ y: 100, opacity: 0 }"
-            :animate="{ y: [0, -10, 0], opacity: 1 }"
-            :transition="{
-              duration: 0.6,
-              type: spring,
-              stiffness: 120,
-              y: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 1 },
-            }"
           >
             <a href="#more">Pokaż więcej</a>
             <a href="#more">
               <i class="fa-solid fa-chevron-down"></i>
             </a>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
@@ -225,20 +189,20 @@ onUnmounted(() => {
 }
 
 .tickets {
-    background-color: #FF6600;
-    padding: 24px 164px;
-    border-radius: 15px;
+  background-color: #ff6600;
+  padding: 24px 164px;
+  border-radius: 15px;
 
-    h1 {
-      margin: 0;
-      font-size: 84px;
-      color: black;
-    }
-
-    &:hover {
-      background-color: #bb501bcc;
-    }
+  h1 {
+    margin: 0;
+    font-size: 84px;
+    color: black;
   }
+
+  &:hover {
+    background-color: #bb501bcc;
+  }
+}
 
 .time-remaining {
   h1 {
@@ -262,7 +226,7 @@ onUnmounted(() => {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  color: #FF6600;
+  color: #ff6600;
 }
 
 .center-content {
@@ -337,7 +301,6 @@ onUnmounted(() => {
       font-size: 30px;
     }
   }
-  
 }
 
 @media (max-width: 1024px) {

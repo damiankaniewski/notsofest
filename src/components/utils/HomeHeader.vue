@@ -50,29 +50,9 @@
       </a>
     </motion.div>
     <div>
-      <motion.img
+      <img
         v-if="!mobileView && !openedMenu && !scrolledDown"
         :src="logo"
-        :initial="{ opacity: 0, y: -100 }"
-        :animate="{ opacity: 1, scale: 1.0, y: 0, rotate: [-1, 1, -1] }"
-        :transition="{
-          duration: 0.4,
-          delay: 0.1,
-          type: spring,
-          stiffness: 120,
-          rotate: {
-            repeat: Infinity,
-            duration: 2,
-            ease: 'easeInOut',
-            delay: 1,
-          },
-          scale: {
-            repeat: Infinity,
-            duration: 2,
-            ease: 'easeInOut',
-            delay: 1,
-          },
-        }"
         alt="NotSoFest logo"
         class="logo-scrolled"
       />
@@ -98,7 +78,8 @@
           }"
           class="location"
         >
-          Kraków <br/> Klub Żaczek
+          Kraków <br />
+          Klub Żaczek
         </motion.h1>
       </a>
       <button v-if="!openedMenu" @click="handleOpenedMenu">
@@ -163,10 +144,10 @@ onUnmounted(() => {
   width: 100%;
 }
 
-  h1 {
-    font-size: 32px;
-    margin: 0;
-  }
+h1 {
+  font-size: 32px;
+  margin: 0;
+}
 
 .left,
 .right {
@@ -175,7 +156,7 @@ onUnmounted(() => {
   gap: 20px;
   align-items: center;
   text-align: center;
-  color: #FF6600;
+  color: #ff6600;
 
   a {
     pointer-events: all;
@@ -191,7 +172,7 @@ onUnmounted(() => {
     i {
       font-size: 64px;
       transition: scale 0.3s ease-in-out, color 0.3s ease-in-out;
-      color: #FF6600;
+      color: #ff6600;
     }
   }
   button:hover {

@@ -95,6 +95,8 @@ onMounted(async () => {
 
     const data = await res.json();
     events.value = data.content;
+    events.value.splice(1);
+
     console.log(data.content);
   } catch (err) {
     error.value = err.message;

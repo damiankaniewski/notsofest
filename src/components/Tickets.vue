@@ -50,7 +50,11 @@
               <div class="buy-ticket-box">
                 <a
                   :href="
-                    isTicketActive ? event.pages.reservationForm.url : null
+                    isTicketActive
+                      ? event.pages.reservationForm.url +
+                        '?salesChannelId=' +
+                        event.offer.prices.salesChannel.id
+                      : null
                   "
                   :class="{ disabled: !isTicketActive(event) }"
                   @click.prevent="!isTicketActive(event) ? null : null"

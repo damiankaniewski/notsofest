@@ -57,7 +57,7 @@
                       : null
                   "
                   :class="{ disabled: !isTicketActive(event) }"
-                  @click.prevent="handleBuyClick(event)"
+                  @click="handleBuyClick(event, $event)"
                 >
                   Kup Bilet
                 </a>
@@ -124,25 +124,21 @@ const isTicketActive = (event) => {
   return !cancelled && state !== "FINISHED";
 };
 
-function handleBuyClick(eventData) {
-  if (!isTicketActive(eventData)) return;
+function handleBuyClick(eventData, e) {
+  if (!isTicketActive(eventData)) {
+    e.preventDefault();
+    return;
+  }
 
-  if (isInitialized()) {
-    track("PurchaseIntent", {
+  if (window.fbq) {
+    window.fbq("track", "PurchaseIntent", {
       event_id: eventData.id,
       event_name: eventData.title,
       value: eventData.offer?.prices?.default?.value || 0,
       currency: "PLN",
     });
+    console.log("🎯 Meta Pixel: PurchaseIntent wysłany", eventData.title);
   }
-
-  setTimeout(() => {
-    const url =
-      eventData.pages.reservationForm.url +
-      "?salesChannelId=" +
-      eventData.offer.prices.salesChannel.id;
-    window.location.href = url;
-  }, 200);
 }
 </script>
 

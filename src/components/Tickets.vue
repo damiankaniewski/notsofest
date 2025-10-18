@@ -101,8 +101,6 @@ onMounted(async () => {
     const data = await res.json();
     events.value = data.content;
     events.value.splice(1);
-
-    console.log(data.content);
   } catch (err) {
     error.value = err.message;
   } finally {
@@ -137,7 +135,6 @@ function handleBuyClick(eventData, e) {
       value: eventData.offer?.prices?.default?.value || 0,
       currency: "PLN",
     });
-    console.log("🎯 Meta Pixel: PurchaseIntent wysłany", eventData.title);
   }
 }
 </script>

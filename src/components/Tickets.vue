@@ -50,23 +50,23 @@
               <div class="buy-ticket-box">
                 <a
                   :href="
-                    isTicketActive
+                    isTicketActive(event)
                       ? event.pages.reservationForm.url +
                         '?salesChannelId=' +
                         event.offer.prices.salesChannel.id
                       : null
                   "
                   :class="{ disabled: !isTicketActive(event) }"
-                  @click.prevent="!isTicketActive(event) ? null : null"
+                  @click.prevent="handleBuyClick(event)"
                 >
                   Kup Bilet
                 </a>
-                <motion.p v-if="event.offer.places.areLastPlaces"
-                  >Ostatnie Bilety</motion.p
-                >
-                <motion.p v-else-if="event.offer.active.state === 'FINISHED'"
-                  >Bilety wyprzedane</motion.p
-                >
+                <motion.p v-if="event.offer.places.areLastPlaces">
+                  Ostatnie Bilety
+                </motion.p>
+                <motion.p v-else-if="event.offer.active.state === 'FINISHED'">
+                  Bilety wyprzedane
+                </motion.p>
                 <motion.p v-else-if="event.cancelled">Odwołano</motion.p>
               </div>
             </div>
@@ -81,6 +81,7 @@
 import { ref, onMounted, nextTick } from "vue";
 import { motion, spring } from "motion-v";
 import SubHeader from "./utils/SubdomainHeader.vue";
+import { track, isInitialized } from "../lib/metaPixel";
 
 const events = ref([]);
 const loading = ref(true);
@@ -108,10 +109,6 @@ onMounted(async () => {
     loading.value = false;
   }
 
-  //events.value[0].offer.active.state = 'FINISHED'
-  //events.value[0].offer.places.areLastPlaces = true;
-  //events.value[0].cancelled = true;
-
   await nextTick();
   if (
     window.kicket &&
@@ -126,6 +123,27 @@ const isTicketActive = (event) => {
   const cancelled = event.cancelled;
   return !cancelled && state !== "FINISHED";
 };
+
+function handleBuyClick(eventData) {
+  if (!isTicketActive(eventData)) return;
+
+  if (isInitialized()) {
+    track("PurchaseIntent", {
+      event_id: eventData.id,
+      event_name: eventData.title,
+      value: eventData.offer?.prices?.default?.value || 0,
+      currency: "PLN",
+    });
+  }
+
+  setTimeout(() => {
+    const url =
+      eventData.pages.reservationForm.url +
+      "?salesChannelId=" +
+      eventData.offer.prices.salesChannel.id;
+    window.location.href = url;
+  }, 200);
+}
 </script>
 
 <style lang="scss" scoped>

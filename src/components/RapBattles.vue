@@ -24,9 +24,9 @@
         :animate="{ x: 0, scale: [1.0, 1.02, 1.0] }"
         id="freestyle-battle"
       >
-        <a href="https://forms.gle/gmNaL6Z8Pq7FgFVv9" class="battle-link">
-          <p>Zgłoś się na bitwę</p>
+        <a href="" style="pointer-events: none" class="battle-link">
           <h1>FREESTYLE</h1>
+          <p>Zapisy zamknięte</p>
         </a>
       </motion.div>
       <motion.div

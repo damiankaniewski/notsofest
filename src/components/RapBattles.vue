@@ -14,9 +14,9 @@
         :animate="{ x: 0, scale: [1.0, 1.02, 1.0] }"
         id="beatbox-battle"
       >
-        <a href="https://forms.gle/QDHDxSP8qQuCgQGv8" class="battle-link">
-          <p>Zgłoś się na bitwę</p>
+        <a href="" style="pointer-events: none" class="battle-link">
           <h1>BEATBOX</h1>
+          <p>Zapisy zamknięte</p>
         </a>
       </motion.div>
       <motion.div
@@ -34,9 +34,9 @@
         :initial="{ x: -2000 }"
         :animate="{ x: 0, scale: [1.0, 1.02, 1.0] }"
       >
-        <a href="https://forms.gle/w7PtzGz7RShmt7U77" class="battle-link">
-          <p>Zgłoś się na bitwę</p>
+        <a href="" style="pointer-events: none" class="battle-link">
           <h1>STREET DANCE</h1>
+          <p>Zapisy zamknięte</p>
         </a>
       </motion.div>
     </div>

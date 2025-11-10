@@ -23,7 +23,7 @@
               delay="0.4"
               text="Nasze wydarzenie jest budowane przez szereg ambitnych oraz kreatywnych osób, które nie wyobrażają sobie codzienności bez tworzenia! Na scenie pojawią się zarówno doświadczeni wyjadacze, jak i głodni wrażeń debiutanci. 
                 Na najbliższym wydarzeniu zagrają dla Was: VBS, Per Dżinn & Żupan, Loki, Flossy, Hoszo&Gabbana, DJ RODO, DJ Sasin i inni. 
-                Wśród jurorów poszczególnych bitew znajdą się takie postacie jak: Kaczorex (Street dance), Sznajder (Beatbox) czy Paramaxil (Freestyle). 
+                Wśród jurorów poszczególnych bitew znajdą się takie postacie jak: Kaczorex (Street dance), Sznajder (Beatbox) czy Wudo (Freestyle). 
                 Dodatkowe atrakcje zapewnią: Grind.sz8, HVPPY TATTOO, NYNX.T, GEMYBAJERY, Blockk Studio, Vandal Jewelry, Gmanji oraz Szoraj Burger.
                 "
             >

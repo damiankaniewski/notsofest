@@ -1,99 +1,94 @@
-<template>
+<template style="overflow-x: hidden">
   <SubHeader />
-  <section>
-    <Swiper
-      :pagination="{ dynamicBullets: true }"
-      :navigation="true"
-      :modules="modules"
-      class="mySwiper"
+
+  <masonry-infinite-grid class="container" @request-append="onRequestAppend">
+    <div
+      class="item"
+      v-for="item in items"
+      :key="item.key"
+      :data-grid-groupkey="item.groupKey"
     >
-      <SwiperSlide
-        v-for="(photo, idx) in photos"
-        :key="idx"
-        class="slide-container"
+      <a
+        :href="item.src"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="thumbnail"
       >
-        <!-- rozmazane tło -->
-        <div
-          class="slide-bg"
-          :style="{ backgroundImage: `url(${photo})` }"
-        ></div>
-        <!-- zdjęcie główne -->
-        <img :src="photo" :alt="`photo-${idx + 1}`" class="slide-img" />
-      </SwiperSlide>
-    </Swiper>
-  </section>
+        <img :src="item.src" alt="photo" loading="lazy" />
+      </a>
+    </div>
+  </masonry-infinite-grid>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import SubHeader from "./utils/SubdomainHeader.vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper/modules";
+import { MasonryInfiniteGrid } from "@egjs/vue3-infinitegrid";
+import { ref } from "vue";
 
-// zdjęcia
-const photos = Object.values(
-  import.meta.glob("@/assets/photos/*.webp", {
-    eager: true,
-    import: "default",
-  })
-).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+const photoModules = import.meta.glob("@/assets/photos/*.webp", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+const photoPaths = Object.values(photoModules) as string[];
 
-const modules = [Pagination, Navigation];
+const BATCH_SIZE = 10;
+const items = ref<{ key: number; groupKey: number; src: string }[]>([]);
+
+const getItems = (nextGroupKey: number, count: number) => {
+  const start = nextGroupKey * count;
+  const end = start + count;
+  return photoPaths.slice(start, end).map((src, index) => ({
+    key: start + index,
+    groupKey: nextGroupKey,
+    src,
+  }));
+};
+
+items.value = getItems(0, BATCH_SIZE);
+
+const onRequestAppend = (e: any) => {
+  const nextGroupKey = (+e.groupKey || 0) + 1;
+  const nextItems = getItems(nextGroupKey, BATCH_SIZE);
+  if (nextItems.length) items.value = [...items.value, ...nextItems];
+};
 </script>
 
-<style lang="scss">
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.slide-container {
-  position: relative;
+<style scoped lang="scss">
+.container {
+  max-width: 100vw;
+  min-width: 100vw;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* wysokość slidera */
+  flex-wrap: wrap;
+  gap: 0;
+  box-sizing: border-box;
   overflow: hidden;
 }
 
-/* tło rozmazane */
-.slide-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  filter: blur(30px);
-  transform: scale(
-    1.1
-  ); /* delikatnie powiększone, żeby nie było czarnych krawędzi */
-  z-index: 1;
+.item {
+  max-width: 25vw;
+  min-width: 25vw;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .thumbnail {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+  }
 }
 
-/* zdjęcie główne */
-.slide-img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  position: relative;
-  z-index: 2;
-}
-
-.swiper-pagination-bullet {
-  background-color: gray;
-  opacity: 1;
-}
-.swiper-pagination-bullet-active {
-  background-color: #FF6600 !important;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  color: #FF6600 !important;
-  font-weight: bold !important;
+/* Zapobiega overflow-x */
+body,
+html {
+  overflow-x: hidden;
 }
 </style>
